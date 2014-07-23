@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Custom styles
+   ========================================================================== */
+
+	
+#word-container{
+	padding:70px;
+	background-color: #CEECF5;
+	font-size: 70px;
+	font-weight: bold;
+	text-align: center;
+	margin-right: 15px;
+	margin-left: 15px;
+}	
+
+#sense-container{
+	padding:70px;
+	background-color: #CEECF5;
+	font-size: 60px;
+	font-weight: bold;
+	text-align: center;
+	
+}	
+
+#recBtn, #recProgressBar, #listenBtn, #pageNav{
+	padding-top:5px;
+}
+
+#listen-container{
+	margin:20px;
+	padding:70px;
+	background-color: #CEECF5;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;	
+	
+}
+			
