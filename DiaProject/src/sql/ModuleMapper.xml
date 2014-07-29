@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ModuleMapper">
+ 
+	<resultMap id="ModuleSelectMap" type="module">
+		<result property="dailyIndex" column="con_index" jdbcType="INTEGER"/>
+		<result property="moduleNo" column="mod_type" jdbcType="INTEGER" />		
+		<result property="moduleIndex" column="mod_order" jdbcType="INTEGER" />
+		<result property="moduleType" column="mod_quiz" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getList" resultType="String">
+	SELECT Mod_quiz
+	FROM module
+	WHERE con_index=1 and mod_order=2 
+	</select>
+
+	<select id="getRolePlay" resultType="String">
+	SELECT Mod_quiz
+	FROM module
+	WHERE con_index=2 and mod_order=2 
+	</select>
+	
+</mapper>
