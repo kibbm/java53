@@ -1,0 +1,61 @@
+//1. 그래들 java 플러그인: 자바 빌드 관련 도구 
+apply plugin: 'java'
+
+//2. 그래들 웹 프러그인: 이클립스 WTP 플러그인을 조작할 수 있는 도구
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+//3. 플러그인 도구들을 사용할 때 필요한 설정 정보
+// java > compileJava 도구를 위한 프로퍼티 설정 
+compileJava {
+  // 소스코드의 문자집합 정보: 기본 시스템이 사용하는 문자집합
+  options.encoding = 'UTF-8'
+}
+
+// 이클립스 WTP 플러그인 관련 프로퍼티 설정
+eclipse {
+  wtp {
+    facet {
+      facet name: 'jst.web', version: '3.0'
+      facet name: 'jst.java', version: '1.7'
+    }
+  }
+}
+
+//자바 소스 코드의 버전 : 이 프로퍼티에 지정된 버전에 맞추어 문법 검사를 수행
+sourceCompatibility = 1.7
+
+//아카이브 파일(.jar, .war)을 제작할 때 사용할 버전 번호 
+//ex)web01-1.0.jar
+version = '1.0'
+
+//의존 라이브러리를 다운로드 받을 때 접속할 서버 정보 
+repositories {
+  //Maven 서버를 사용하겠다고 선언 : 서버의 주소는 내부적으로 정의되어 있다.
+  mavenCentral()
+}
+
+// 다운로드 받아야 할 의존 라이브러리 지정
+// 라이브러리 이름 검색 =-> http://mvnrepository.com/
+dependencies {
+  // 실행할 때 서버쪽에서 제공하는 라이브러리는 providedCompile으로 선언한다.
+  // providedCompile : 컴파일하는 동안만 사용. 배치할 때는 제외되는 라이브러리.
+  providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+  
+  // compile로 지정된 라이브러리 => 컴파일할 때도 사용하고 배치할 때도 포함시킴.
+  compile 'commons-fileupload:commons-fileupload:1.3.1'
+  compile 'com.google.code.gson:gson:2.2.4'
+  compile 'org.springframework:spring-webmvc:4.0.6.RELEASE'
+  compile 'org.springframework:spring-jdbc:4.0.6.RELEASE'
+  compile 'org.mybatis:mybatis-spring:1.2.2'
+  compile 'org.springframework:spring-context:4.0.6.RELEASE'
+  compile 'javax.servlet:jstl:1.2'
+  compile 'mysql:mysql-connector-java:5.1.31'
+  compile 'log4j:log4j:1.2.17'
+  compile 'org.mybatis:mybatis:3.2.7'
+  compile 'commons-collections:commons-collections:3.2'
+  //compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+  
+  // testCompile로 지정된 라이브러리 => 컴파일할 때 사용하고, 테스트할 때 사용한다. 배치할 때는 제외한다.
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}

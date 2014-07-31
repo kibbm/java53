@@ -1,1 +1,0 @@
-{"title":"words","quiz":["god","hello","home"],"god":["½Å","god.mp3"],"hello":["¾È³ç","hello.mp3"],"home":["Áý","home.mp3"]}
