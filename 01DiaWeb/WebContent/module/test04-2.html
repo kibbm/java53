@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test04</title>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script>
+// window 객체의  onload 속성에 등록한 함수는
+// HTML 문서를 모두 해석하고 출력한 후에 호출한다.
+window.onload = function() {
+	$.getJSON("/list.do", function(data){
+        /* for (var i in data) {
+            $("<div>").css("border", "1px solid red")
+                    .append($("<h1>").text(data[i].name))
+                    .append($("<p>").text("age:" + data[i].age + ", tel:" + data[i].tel))
+                    .appendTo("body");              
+        } */
+	});
+	
+	
+};
+
+</script>
+</head>
+<body>
+<h1>AJAX 요청 4: JSON + jQuery</h1>
+</body>
+</html>
