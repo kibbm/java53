@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import spring.domain.Module;
-import spring.service.module.ModuleDao;
-import spring.service.module.ModuleService;
+import spring.service.module.dao.ModuleDao;
 
 @Service("moduleService")
 public class ModuleServiceImpl implements ModuleService {

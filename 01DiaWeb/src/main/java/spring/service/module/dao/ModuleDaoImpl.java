@@ -1,4 +1,4 @@
-package spring.service.module;
+package spring.service.module.dao;
 
 import java.util.Map;
 
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import spring.domain.Module;
-import spring.service.module.ModuleDao;
 
 @Repository("moduleDao")
 public class ModuleDaoImpl implements ModuleDao{

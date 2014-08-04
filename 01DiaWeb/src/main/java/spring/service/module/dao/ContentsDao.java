@@ -1,4 +1,4 @@
-package spring.service.module;
+package spring.service.module.dao;
 
 import java.util.List;
 

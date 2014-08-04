@@ -1,4 +1,4 @@
-package spring.service.module;
+package spring.service.module.dao;
 
 import java.util.List;
 
@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import spring.domain.Contents;
-import spring.service.module.ContentsDao;
-import spring.service.module.ModuleDao;
 
 @Repository("contentsDao")
 public class ContentsDaoImpl implements ContentsDao{

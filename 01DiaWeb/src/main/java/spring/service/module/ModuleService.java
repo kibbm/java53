@@ -1,8 +1,5 @@
 package spring.service.module;
 
-import java.util.Map;
-
-import spring.domain.Module;
 
 
 public interface ModuleService {
