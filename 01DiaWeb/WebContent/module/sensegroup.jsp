@@ -4,18 +4,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="dist/ico/favicon.png">
+<link rel="shortcut icon" href="/dist/ico/favicon.png">
 
 <title>DIA English</title>
 
 <!-- Bootstrap core CSS -->
-<link href="dist/css/bootstrap.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="dist/css/jumbotron.css" rel="stylesheet">
+<link href="/dist/css/jumbotron.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="dist/css/custom2.css">
+<link rel="stylesheet" href="/dist/css/custom2.css">
 
 </head>
 
@@ -70,7 +70,7 @@
 			<!-- next 다음버튼 -->
 			<div class="row" id="nextBtn">
 				<div class="col-sm-3">
-					<a href="/01DiaWeb/roleplay.do?conIndex=${conIndex}&modOrder=5"> <input type="hidden"
+					<a href="/roleplay.do?conIndex=${conIndex}&modOrder=5"> <input type="hidden"
 						class="btn btn-default btn-lg" id="next" value="next">
 					</a>
 				</div>
@@ -87,14 +87,14 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="/dist/js/bootstrap.min.js"></script>
 
 	<!-- SlidesJS Required: Link to jQuery -->
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<!-- End SlidesJS Required -->
 
 	<!-- SlidesJS Required: Link to jquery.slides.js -->
-	<script src="dist/js/jquery.slides.min.js"></script>
+	<script src="/dist/js/jquery.slides.min.js"></script>
 	<!-- End SlidesJS Required -->
 
 	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->

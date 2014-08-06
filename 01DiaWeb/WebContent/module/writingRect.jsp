@@ -4,18 +4,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="dist/ico/favicon.png">
+<link rel="shortcut icon" href="/dist/ico/favicon.png">
 
 <title>DIA English</title>
 
 <!-- Bootstrap core CSS -->
-<link href="dist/css/bootstrap.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="dist/css/jumbotron.css" rel="stylesheet">
+<link href="/dist/css/jumbotron.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="dist/css/custom2.css">
+<link rel="stylesheet" href="/dist/css/custom2.css">
 
 <!--  jQuery -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
@@ -78,7 +78,7 @@
 			
 			<div id="my_popup" class="well">
 				<h4>학습을 종료하시겠습니까?</h4>
-				<a href="/01DiaWeb/conList.do"> 
+				<a href="/conList.do"> 
 				<input type="button"
 					class="btn btn-default" value="종료">
 				</a>
@@ -98,7 +98,7 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	
 	<!-- Bootstrap core JavaScript  -->
-	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="/dist/js/bootstrap.min.js"></script>
 	
 	<!-- jQuery  -->
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>

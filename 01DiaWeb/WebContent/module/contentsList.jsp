@@ -8,18 +8,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="dist/ico/favicon.png">
+<link rel="shortcut icon" href="/dist/ico/favicon.png">
 
 <title>DIA ENGLISH</title>
 
 <!-- Bootstrap core CSS -->
-<link href="dist/css/bootstrap.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="dist/css/jumbotron.css" rel="stylesheet">
+<link href="/dist/css/jumbotron.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="dist/css/custom2.css">
+<link rel="stylesheet" href="/dist/css/custom2.css">
 
 
 </head>
@@ -63,7 +63,7 @@
 
 								<div class="col-sm-4">
 									<td>
-										<a href="/01DiaWeb/writing.do?conIndex=${con.conIndex}&modOrder=1">${con.conTitle}</a>
+										<a href="/writing.do?conIndex=${con.conIndex}&modOrder=1">${con.conTitle}</a>
 									</td>
 								</div>
 							</tr>
@@ -85,14 +85,14 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="/dist/js/bootstrap.min.js"></script>
 
 	<!-- SlidesJS Required: Link to jQuery -->
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<!-- End SlidesJS Required -->
 
 	<!-- SlidesJS Required: Link to jquery.slides.js -->
-	<script src="dist/js/jquery.slides.min.js"></script>
+	<script src="/dist/js/jquery.slides.min.js"></script>
 	<!-- End SlidesJS Required -->
 
 	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->

@@ -16,12 +16,14 @@
 	<typeAliases>
 		<typeAlias alias="module"  type="spring.domain.Module" />
 		<typeAlias alias="contents"  type="spring.domain.Contents" />
+		<typeAlias alias="student"  type="spring.domain.Student" />
 	</typeAliases>
 	
 	 <!-- SQL Definition :: file include -->
 	<mappers>
 		<mapper resource="sql/ModuleMapper.xml"/>
 		<mapper resource="sql/ContentsMapper.xml"/>
+		<mapper resource="sql/StudentMapper.xml"/>
 	</mappers>
 
 </configuration>

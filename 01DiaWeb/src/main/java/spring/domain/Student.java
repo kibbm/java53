@@ -1,5 +1,7 @@
 package spring.domain;
 
+import java.sql.Date;
+
 public class Student {
 	
 	//Field
@@ -13,8 +15,10 @@ public class Student {
 	private String nativeLang;		//모국어
 	private String stuLevel;		//레벨
 	private String role;			//역할
+	private Date joindate;			//가입일
+	private boolean flag;			//탈퇴여부
 	
-	
+		
 	//Constructor
 	public Student() {
 		// TODO Auto-generated constructor stub
@@ -102,6 +106,40 @@ public class Student {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public Date getJoindate() {
+		return joindate;
+	}
+
+
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
+	}
+
+
+	public boolean isFlag() {
+		return flag;
+	}
+
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Student [userId=" + userId + ", password=" + password
+				+ ", email=" + email + ", userName=" + userName + ", phone="
+				+ phone + ", addr=" + addr + ", targetLang=" + targetLang
+				+ ", nativeLang=" + nativeLang + ", stuLevel=" + stuLevel
+				+ ", role=" + role + ", joindate=" + joindate + ", flag="
+				+ flag + "]";
+	}
+
+
+	
+
 
 
 	
