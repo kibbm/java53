@@ -10,11 +10,7 @@
 
 
 	<!-- 어노테이션 기반 wiring하라고.. -->
-	<context:component-scan base-package="spring.*">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-	</context:component-scan>
+	<context:component-scan base-package="spring.web.controller"/>
 
 
 	<!-- ViewResolver :: zero Configuration -->	
