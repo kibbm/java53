@@ -9,14 +9,12 @@ public class Student {
 	private String password;
 	private String email;
 	private String userName;
+	private String birthdate;	//나이 확인 위한 생년월일
 	private String phone;
-	private String addr;
-	private String targetLang;		//학습언어
-	private String nativeLang;		//모국어
-	private String stuLevel;		//레벨
-	private String role;			//역할
-	private Date joindate;			//가입일
-	private boolean flag;			//탈퇴여부
+	private String addr;	
+	private String level;		//레벨	
+	private Date joindate;		//가입일
+	private boolean flag;		//탈퇴여부
 	
 		
 	//Constructor
@@ -24,89 +22,88 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	//Method
-	
+
+	//getter, setter
 	public String getUserId() {
 		return userId;
 	}
+
 
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
+
 	public String getPassword() {
 		return password;
 	}
+
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+
 	public String getEmail() {
 		return email;
 	}
+
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
 	public String getUserName() {
 		return userName;
 	}
+
 
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
+
+	public String getBirthdate() {
+		return birthdate;
+	}
+
+
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
+	}
+
+
 	public String getPhone() {
 		return phone;
 	}
+
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
+
 	public String getAddr() {
 		return addr;
 	}
+
 
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
 
-	public String getTargetLang() {
-		return targetLang;
+
+	public String getLevel() {
+		return level;
 	}
 
-	public void setTargetLang(String targetLang) {
-		this.targetLang = targetLang;
+
+	public void setLevel(String level) {
+		this.level = level;
 	}
 
-	public String getNativeLang() {
-		return nativeLang;
-	}
 
-	public void setNativeLang(String nativeLang) {
-		this.nativeLang = nativeLang;
-	}
-
-	public String getStuLevel() {
-		return stuLevel;
-	}
-
-	public void setStuLevel(String stuLevel) {
-		this.stuLevel = stuLevel;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
 	public Date getJoindate() {
 		return joindate;
 	}
@@ -130,17 +127,9 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [userId=" + userId + ", password=" + password
-				+ ", email=" + email + ", userName=" + userName + ", phone="
-				+ phone + ", addr=" + addr + ", targetLang=" + targetLang
-				+ ", nativeLang=" + nativeLang + ", stuLevel=" + stuLevel
-				+ ", role=" + role + ", joindate=" + joindate + ", flag="
-				+ flag + "]";
-	}
-
-
-	
-
-
-
-	
+				+ ", email=" + email + ", userName=" + userName
+				+ ", birthdate=" + birthdate + ", phone=" + phone + ", addr="
+				+ addr + ", level=" + level + ", joindate=" + joindate
+				+ ", flag=" + flag + "]";
+	}	
 }
