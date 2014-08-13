@@ -14,8 +14,8 @@
 <!-- Custom styles for this template -->
 <link href="/dist/css/jumbotron.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="/dist/css/custom2.css">
+<!-- Custom styles-->
+<link href="/custom/css/custom2.css" rel="stylesheet">heet">
 
 </head>
 
@@ -82,22 +82,12 @@
 	<!-- /container -->
 
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!--  ================================================== -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/dist/js/bootstrap.min.js"></script>
 
-	<!-- SlidesJS Required: Link to jQuery -->
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<!-- End SlidesJS Required -->
-
-	<!-- SlidesJS Required: Link to jquery.slides.js -->
-	<script src="/dist/js/jquery.slides.min.js"></script>
-	<!-- End SlidesJS Required -->
-
-	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
+	<!-- module JS -->
 	<script>
 	$(document).ready(function(){
 		
@@ -152,6 +142,5 @@
 		});
 	});
 	</script>
-	<!-- End SlidesJS Required -->
 </body>
 </html>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="StudentMapper">
+
+	<resultMap id="studentSelectMap" type="student">
+		<result property="userId" column="id" jdbcType="VARCHAR"/>
+		<result property="password" column="password" jdbcType="VARCHAR"/>
+		<result property="email" column="email" jdbcType="VARCHAR"/>
+		<result property="userName" column="name" jdbcType="VARCHAR"/>
+		<result property="birthdate" column="birthdate" jdbcType="VARCHAR"/>
+		<result property="phone" column="phone" jdbcType="VARCHAR"/>
+		<result property="addr" column="addr" jdbcType="VARCHAR"/>		
+		<result property="level" column="level" jdbcType="VARCHAR"/>			
+		<result property="joindate" column="join_date" jdbcType="DATE"/>
+		<result property="flag" column="flag" jdbcType="BOOLEAN"/>
+		
+	</resultMap>
+
+	<insert id="addStudent" parameterType="student">
+		INSERT
+		INTO user (id, password, email, name, birthdate, phone, addr, level, join_date, flag)
+		VALUES (#{userId}, #{password}, #{email}, #{userName}, #{birthdate} 
+		#{phone}, #{addr}, '대기', SYSDATE(), true)	
+	</insert>
+
+	<select id="getStudent" parameterType="string" resultMap="studentSelectMap">
+		SELECT
+		id, password, email, name, birthdate, phone, addr, level, join_date, flag 
+		FROM user
+		where id=#{value}	
+	</select>
+
+	<update id="updateStudent">
+		UPDATE user
+		<set>
+			password = #{password},
+			email = #{email}, 
+			name = #{userName},
+			birthdate = #{birthdate}, 
+			phone = #{phone}, 
+			addr = #{addr}					
+		</set>
+		WHERE id=#{userId}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<update id="updateLeaveStudent">
+		UPDATE user
+		<set>			
+			flag = false		
+		</set>
+		WHERE id=#{userId}	
+	</update>
+	
+			
+		<!-- SQL : SELECT LIST -->
+<!-- 	<select  id="getUserList"  parameterType="search"	resultMap="userSelectMap">
+	  	SELECT *
+	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
+	  					FROM		(	SELECT id , name , email
+											FROM student
+										<if test="searchCondition != null">							
+											<where>
+											<if test="searchCondition == 0 and searchKeyword !='' ">				
+												id = #{searchKeyword}
+											</if>
+											<if test="searchCondition == 1 and searchKeyword !='' ">
+												name = #{searchKeyword}
+											</if>                
+							                <if test="searchCondition == 2 and searchKeyword !='' ">
+												  stu_level = #{searchKeyword}
+											</if>               
+							                <if test="searchCondition == 3 and searchKeyword !='' ">
+							                flag= #{searchKeyword}
+							                </if>                
+							                and
+							                role='학생'
+											</where>
+										</if>
+											ORDER BY id ) inner_table
+						WHERE ROWNUM &lt;= #{endRowNum} )
+		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+	 </select> -->
+	 	<!--  위 두번째 subQuery 의  
+	 			WHERE ROWNUM &lt;= #{endRowNum} ) 는
+	 			WHERE ROWNUM <= #{endRowNum} ) 의미이며..
+	 			< 는 keyword 로 &lt; 를	사용.
+	 			
+	 			<![CDATA[  ~~~  ]]> 를 이용하여 아래와 같이 사용  할 수 있다.
+	 			CDATA ==> Character Data 의 의미 Java 에서 \n 같은 특수문자 처리  
+
+				WHERE ROWNUM <![CDATA[ <=]]> #{endRowNum} )
+		-->
+		
+		
+		<!-- select * from
+(select @rownum:=@rownum+1 as row, a.*
+from
+  (select * from student WHERE
+												stu_level = '초'
+											and
+							           flag= true
+                      and
+							           role='학생'
+                     ORDER BY id desc) a, (select @rownum:=0) b) c
+where
+c.row between 2 and 3; -->
+		
+		
+	
+	<!-- SQL : SELECT ROW Count //학생 관리-->	 
+<!-- 	 <select  id="getTotalCount"  parameterType="search"	 resultType="int">
+		SELECT COUNT(*)
+		FROM(	SELECT id , name , email
+				FROM user
+			<if test="searchCondition != null">							
+				<where>
+				<if test="searchCondition == 0 and searchKeyword !='' ">				
+					id = #{searchKeyword}
+				</if>
+				<if test="searchCondition == 1 and searchKeyword !='' ">
+					name = #{searchKeyword}
+				</if>                
+                <if test="searchCondition == 2 and searchKeyword !='' ">
+					  stu_level = #{searchKeyword}
+				</if>               
+                <if test="searchCondition == 3 and searchKeyword !='' ">
+                flag= #{searchKeyword}
+                </if>                
+                and
+                role='학생'
+				</where>
+			</if> ) countTable		 					
+	 </select>-->
+	
+	
+</mapper>		
+		 

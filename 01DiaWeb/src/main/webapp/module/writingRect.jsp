@@ -14,11 +14,11 @@
 <!-- Custom styles for this template -->
 <link href="/dist/css/jumbotron.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="/dist/css/custom2.css">
+<!-- Custom styles-->
+<link href="/custom/css/custom2.css" rel="stylesheet">
 
 <!--  jQuery -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/jQuery/css/jquery-ui.css">
 
 
 
@@ -93,20 +93,19 @@
 
 
 
-	<!-- ==================================================  -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	
-	<!-- Bootstrap core JavaScript  -->
+	<!--  ================================================== -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/dist/js/bootstrap.min.js"></script>
 	
 	<!-- jQuery  -->
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
-	<script src="jQuery/jquery.popupoverlay.js"></script>
+	<!-- popup plugin -->
+	<script src="/jQuery/js/jquery.popupoverlay.js"></script>
 	
-	<!-- jQuery  -->
+	<!-- module JS -->
 	<script>
 		$(document).ready(function() {
 

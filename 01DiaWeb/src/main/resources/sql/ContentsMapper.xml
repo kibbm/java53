@@ -19,4 +19,9 @@
 	WHERE con_level=#{conLevel}
 	</select>
 
+	<select id="getAllCon" resultMap="conSelectMap">
+		SELECT 
+		con_index, con_title, con_level, con_order
+		FROM Contents
+	</select>	
 </mapper>

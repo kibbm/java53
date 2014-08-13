@@ -28,6 +28,8 @@ public class ContentsController {
 		System.out.println("==> ContentsController default Constructor call......");
 	}
 	
+	//Method
+	//User :: 컨텐츠리스트
 	@RequestMapping("/conList.do")
 	public ModelAndView getConList(@ModelAttribute("Contents")Contents con) throws Exception{
 	
@@ -42,6 +44,53 @@ public class ContentsController {
 		
 		return modelAndView;
 	}
+	
+	
+	//=============> 관리자 컨텐츠 만들기 페이지
+	
+	//컨텐츠 만들기 메인페이지                 //login 에서 makeConView 로 페이지 전환 (login페이지 jps로 바뀌면 필요없어짐)
+	@RequestMapping("/makeConView.do")
+	public ModelAndView makeConMain() throws Exception{
+	
+		System.out.println("====> makeConMain() start........");
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		//컨텐츠 리스트 가지고 온 후 컨텐츠 만드는 메인페이지로 전환
+		List<Contents> conList = contentsService.getAllCon();
+		modelAndView.addObject("conList", conList);
+		
+		
+		modelAndView.setViewName("/admin/makeConView.jsp");
+
+		
+		return modelAndView;
+	}
+	
+	
+	//컨텐츠 유형
+	@RequestMapping("/makeCon.do")
+	public ModelAndView makeCon() throws Exception{
+	
+		System.out.println("====> makeCon() start........");
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/admin/makeMod.jsp");
+		
+		return modelAndView;
+	}
+	
+	//모듈 만들기
+	@RequestMapping("/makeMod.do")
+	public ModelAndView makeMod() throws Exception{
+	
+		System.out.println("====> makeMod() start........");
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/admin/makeConView.do");
+		
+		return modelAndView;
+	}	
 
 	
 }

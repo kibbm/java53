@@ -28,11 +28,18 @@ public class ContentsDaoImpl implements ContentsDao{
 	}
 
 	//method
-	//contents list가져오기	
+	//User :: contents list가져오기	
 	@Override
 	public List<Contents> getConList(String conLevel) throws Exception {
 		return sqlSession.selectList("ContentsMapper.getConList", conLevel);
 	}
+	
+	
+	//Admin :: 컨텐츠만들기 페이지에서 모든 컨텐츠 가지고 오기
+	@Override
+	public List<Contents> getAllCon() throws Exception {
+		return sqlSession.selectList("ContentsMapper.getAllCon");
+	}	
 	
 
 }

@@ -23,14 +23,17 @@ public class ContentsServiceImpl implements ContentsService {
 	}
 
 	///Method
-	//contents list가져오기	
+	//User :: contents list가져오기	
 	@Override
 	public List<Contents> getConList(String conLevel) throws Exception {
 		return contentsDao.getConList(conLevel);
 	}
-
 	
-
-
+	
+	//Admin :: 컨텐츠만들기 페이지에서 모든 컨텐츠 가지고 오기
+	@Override
+	public List<Contents> getAllCon() throws Exception {
+		return contentsDao.getAllCon();
+	}	
 
 }

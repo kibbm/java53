@@ -5,7 +5,6 @@ package spring.service.module;
 public interface ModuleService {
 
 	//Writing ���
-
 	public String getWriting(int conIndex, String modOrder) throws Exception;
 
 	//Words List
