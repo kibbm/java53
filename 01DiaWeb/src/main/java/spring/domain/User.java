@@ -2,7 +2,7 @@ package spring.domain;
 
 import java.sql.Date;
 
-public class Student {
+public class User {
 	
 	//Field
 	private String userId;
@@ -19,7 +19,7 @@ public class Student {
 	
 		
 	//Constructor
-	public Student() {
+	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -124,7 +124,6 @@ public class Student {
 		this.flag = flag;
 	}
 
-
 	//add for rowno
 	public int getRecid() {
 		return recid;
@@ -144,15 +143,4 @@ public class Student {
 				+ addr + "\', level:\'" + level + "\', joindate:\'" + joindate
 				+ "\', flag:" + flag + "}";
 	}
-	/*@Override
-	public String toString() {
-		return "{ "+ "recid: " + recid + ", userId:\'" + userId + "\', password:\'" + password
-				+ "\', email:\'" + email + "\', userName:\'" + userName
-				+ "\', birthdate:\'" + birthdate + "\', phone:\'" + phone + "\', addr:\'"
-				+ addr + "\', level:\'" + level + "\', joindate:\'" + joindate
-				+ "\', flag:" + flag + "}";
-	}*/
-
-
-	
 }

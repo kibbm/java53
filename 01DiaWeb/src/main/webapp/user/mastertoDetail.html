@@ -26,7 +26,7 @@ $(function () {
     $('#grid1').w2grid({ 
         name: 'grid1', 
         header: 'Master',
-        url: '../listStudentData.do',
+        url: '../listUserData.do',
         show: { 
         	header:true,
             toolbar: true,
@@ -68,7 +68,7 @@ $(function () {
       	
                $.ajax({
             	type:"post",
-            	url:"/updateStudentforAdmin.do",////
+            	url:"/updateUserforAdmin.do",////
             	cache:false,
             	data: {
             	    list: updateContent

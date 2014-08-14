@@ -14,31 +14,31 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring.domain.Student;
-import spring.service.student.StudentService;
+import spring.domain.User;
+import spring.service.user.UserService;
 
 import com.google.gson.Gson;
 
 @Controller
-public class StudentController {
+public class UserController {
 
 	@Autowired
-	@Qualifier("studentService")
-	private StudentService studentService;
+	@Qualifier("userService")
+	private UserService userService;
 
 	//constructor
-	public StudentController() {
-		System.out.println("==> studentController default Constractor call....");
+	public UserController() {		
+		System.out.println("::" + getClass() + "default Constractor call...");
 	}
 
 	//update user info by user
-		@RequestMapping("/updateStudentforAdmin.do")
-		public ModelAndView updateStudent(@ModelAttribute("student") Student student,
+		@RequestMapping("/updateUserforAdmin.do")
+		public ModelAndView updateUser(@ModelAttribute("user") User user,
 				String list,
 				HttpServletRequest request,
 				HttpSession session) throws Exception{
 			
-			System.out.println("\n::updateStudentforAdmin() start...");
+			System.out.println("\n::updateUserforAdmin.do () start...");
 			
 			Gson gson = new Gson();
 			ArrayList itemList = gson.fromJson(list, ArrayList.class);			
@@ -56,17 +56,17 @@ public class StudentController {
 				//System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
 				//vo. where recid
 				
-				student.setRecid(recid);
-				student.setEmail((String) userMap.get("email"));
-				student.setPhone((String)userMap.get("phone"));
-				student.setAddr((String) userMap.get("addr"));
-				student.setLevel((String)userMap.get("level"));
-				student.setFlag((boolean) userMap.get("flag"));
+				user.setRecid(recid);
+				user.setEmail((String) userMap.get("email"));
+				user.setPhone((String)userMap.get("phone"));
+				user.setAddr((String) userMap.get("addr"));
+				user.setLevel((String)userMap.get("level"));
+				user.setFlag((boolean) userMap.get("flag"));
 			}			
 			
 						
 			
-			int result = studentService.updateStudent(student);
+			int result = userService.updateUser(user);
 			System.out.println("result : " + result);
 			/* ..!
 			 * String sessionId = ((Student) session.getAttribute("student")).getUserId();
@@ -82,25 +82,25 @@ public class StudentController {
 			return modelAndView;		
 		}
 		
-	@RequestMapping("/listStudent.do")
+	@RequestMapping("/listUser.do")
 	public ModelAndView listUser(HttpServletRequest request, HttpSession session)
 			throws Exception{
 		
-		System.out.println("\n:: listStudent.do start...");
+		System.out.println("\n:: listUser.do start...");
 				
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("student/mastertoDetail.html");
+		modelAndView.setViewName("user/mastertoDetail.html");
 		
 		return modelAndView;	
 	}
 	
-	@RequestMapping("/listStudentData.do")
+	@RequestMapping("/listUserData.do")
 	public ModelAndView listUserData(HttpServletRequest request, HttpSession session)
 			throws Exception{
 		
 		System.out.println("\n:: listUserData.do start...");
 		
-		List<Student> list = studentService.getStudentList();
+		List<User> list = userService.getUserList();
 		//String jsonString = "{\"records\" :" + list +"}";		
 		String jsonString = "{\"total\":" + list.size() + ", \"records\" :" + list +"}";
 		//System.out.println("\n :: jsonString : " + jsonString);
@@ -108,7 +108,7 @@ public class StudentController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("jsonString", jsonString);
-		modelAndView.setViewName("student/listStudentData.jsp");
+		modelAndView.setViewName("user/listUserData.jsp");
 				
 		return modelAndView;		 
 	}
