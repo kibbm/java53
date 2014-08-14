@@ -7,8 +7,9 @@ import spring.domain.User;
 public interface UserDao {
 
 	
-	//updateStudent
-	public int updateUser(User user) throws Exception;	
+	//updateUserforAdmin
+	public int updateUserforAdmin(User user) throws Exception;	
+	
 	
 	
 	//getStudentList

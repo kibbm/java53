@@ -33,7 +33,7 @@ public class UserController {
 
 	//update user info by user
 		@RequestMapping("/updateUserforAdmin.do")
-		public ModelAndView updateUser(@ModelAttribute("user") User user,
+		public ModelAndView updateUserforAdmin(@ModelAttribute("user") User user,
 				String list,
 				HttpServletRequest request,
 				HttpSession session) throws Exception{
@@ -50,10 +50,11 @@ public class UserController {
 				System.out.println(userMap.get("recid") + "," + userMap.get("email"));
 				
 				//?????
-				//recid = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recid"))));//double->int
-				int recid = (Integer)userMap.get("recid");
+				int recid = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recid"))));//double->int
+				//int recid = (Integer)userMap.get("recid");
 				
-				//System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
+				
+				System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
 				//vo. where recid
 				
 				user.setRecid(recid);
@@ -66,7 +67,7 @@ public class UserController {
 			
 						
 			
-			int result = userService.updateUser(user);
+			int result = userService.updateUserforAdmin(user);
 			System.out.println("result : " + result);
 			/* ..!
 			 * String sessionId = ((Student) session.getAttribute("student")).getUserId();

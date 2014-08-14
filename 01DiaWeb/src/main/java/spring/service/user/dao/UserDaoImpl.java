@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
 
 
 	@Override
-	public int updateUser(User user) throws Exception {		
+	public int updateUserforAdmin(User user) throws Exception {		
 		return sqlSession.update("UserMapper.updateUser", user);
 	}
 

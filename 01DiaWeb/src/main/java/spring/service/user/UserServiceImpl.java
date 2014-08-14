@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
 		System.out.println("::" + getClass() + "default constructor start..");	}
 
 	@Override
-	public int updateUser(User user) throws Exception {
-		return userDao.updateUser(user);
+	public int updateUserforAdmin(User user) throws Exception {
+		return userDao.updateUserforAdmin(user);
 	}
 
 	@Override
