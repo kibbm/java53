@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="../dist/css/w2ui-1.4.1.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../dist/js/w2ui-1.4.1.js"></script> 
+</head>
+<body>
+
+    <div id="grid1" style="height:380px"></div>    
+    <div id="grid2" style="height:250px; width:50%"></div>     
+<br>
+
+mastertoDetail.html
+
+<script type="text/javascript">
+var stuLevel=[
+  {id:1, text:'초등'},
+  {id:2, text:'중고'},
+  {id:3, text:'일반'},  
+  {id:4, text:'대기'}
+];
+
+$(function () {	
+    $('#grid1').w2grid({ 
+        name: 'grid1', 
+        header: 'Master',
+        url: '../listStudentData.do',
+        show: { 
+        	header:true,
+            toolbar: true,
+            footer: true,
+            lineNumbers : true,      
+            selectColumn:true,
+            toolbarSave: true
+        },///        
+        multiSearch: false,
+        searches: [
+           { field: 'userId', caption: 'userId', type: 'text' },
+           { field: 'userName', caption: 'userName', type: 'text' },
+           { field: 'birthdate', caption: 'Birthdate', type: 'date'},
+           { field: 'level', caption: 'level', type: 'text' },
+           { field: 'joindate', caption: 'joindate', type: 'date' }
+        ],
+        columns: [                
+            { field: 'userId', caption: 'userId', size: '15%', attr: 'align=center' },            
+            { field: 'email', caption: 'Email', size: '15%', editable:{type:'text'} },
+            { field: 'userName', caption: 'userName', size: '10%', sortable:true },            
+            { field: 'birthdate', caption: 'Birthdate', size: '10%', sortable:true},            
+            { field: 'phone', caption: 'phone', size: '10%', editable:{type:'text'} },
+            { field: 'addr', caption: 'addr', size: '10%', editable:{type:'text'} },
+            { field: 'level', caption: 'level', size: '10%', sortable:true, editable:{type:'text'} 
+			            /* editable: { type: 'level', items: stuLevel, showAll: true },
+			            render: function (record, index, col_index) {
+			                var html = this.getCellValue(index, col_index);
+			                return html.text || '';
+			            } */
+            },
+            { field: 'joindate', caption: 'joindate', size: '10%', sortable:true, editable:{type:'date'} },
+            { field: 'flag', caption: 'flag', size: '5%', sortable:true, editable:{type:'text'}}      
+        ],
+        onSave: function(event) {        	        	
+        	//alert("수정된 값:" + w2ui['grid1'].getChanges());//바뀐것만 json형태.
+        	//console.log(updateContent);
+        	
+        	var updateContent = JSON.stringify(w2ui['grid1'].getChanges());//stringify(배열을 문자열json으로 바꿔줌.)!!
+      	
+               $.ajax({
+            	type:"post",
+            	url:"/updateStudentforAdmin.do",////
+            	cache:false,
+            	data: {
+            	    list: updateContent
+            	    ////수정된 값의  json형태, list라는 이름으로 넘김.
+            	},
+            	success:function(response){
+            		alert('success!!!');     		
+            	}, 
+            	error:function(){
+            		alert('Error while request...');
+            	}            	
+            })            
+        	console.log(event);  
+        },         
+        //////////
+        onClick: function (event) {
+            w2ui['grid2'].clear();            
+            var record = this.get(event.recid);
+            w2ui['grid2'].add([
+				{ recid: 0, name: 'userName:', value: record.userName },
+                { recid: 1, name: 'userId:', value: record.userId },                
+                { recid: 2, name: 'email:', value: record.email },                
+                { recid: 3, name: 'birthdate', value: record.birthdate },
+                { recid: 4, name: 'phone:', value: record.phone },
+                { recid: 5, name: 'addr:', value: record.addr },
+                { recid: 6, name: 'level:', value: record.level },
+                { recid: 7, name: 'joindate:', value: record.joindate },
+                { recid: 8, name: 'flag:', value: record.flag }
+            ]);
+        }
+    });    
+    $('#grid2').w2grid({ 
+        header: 'Details',
+        show: { header: true, columnHeaders: false},
+        name: 'grid2', 
+        columns: [                
+            { field: 'name', caption: 'Name', size: '100px', style: 'background-color: #efefef; border-bottom: 1px solid white; padding-right: 5px;', attr: "align=right" },
+            { field: 'value', caption: 'Value', size: '100%' }
+        ]
+    });    
+});
+ </script>
+
+</body>
+</html>

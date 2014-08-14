@@ -6,7 +6,7 @@
 <mapper namespace="ModuleMapper">
  
 	<resultMap id="ModuleSelectMap" type="module">
-		<result property="conIndex" column="con_index" jdbcType="INTEGER"/>
+		<result property="conIndex" column="cno" jdbcType="INTEGER"/>
 		<result property="modType" column="mod_type" jdbcType="VARCHAR" />		
 		<result property="modOrder" column="mod_order" jdbcType="VARCHAR" />
 		<result property="modQuiz" column="mod_quiz" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
 	<select id="getModule" parameterType="map" resultType="String">
 	SELECT Mod_quiz
 	FROM module
-	WHERE con_index=#{conIndex} and mod_order=#{modOrder} 
+	WHERE cno=#{conIndex} and mod_order=#{modOrder} 
 	</select>
 		
 </mapper>

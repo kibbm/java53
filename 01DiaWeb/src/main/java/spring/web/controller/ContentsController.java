@@ -29,7 +29,7 @@ public class ContentsController {
 	}
 	
 	//Method
-	//User :: 컨텐츠리스트
+	//User :: 而⑦뀗痢좊━�ㅽ듃
 	@RequestMapping("/conList.do")
 	public ModelAndView getConList(@ModelAttribute("Contents")Contents con) throws Exception{
 	
@@ -46,9 +46,9 @@ public class ContentsController {
 	}
 	
 	
-	//=============> 관리자 컨텐츠 만들기 페이지
+	//=============> 愿�━��而⑦뀗痢�留뚮뱾湲��섏씠吏�
 	
-	//컨텐츠 만들기 메인페이지                 //login 에서 makeConView 로 페이지 전환 (login페이지 jps로 바뀌면 필요없어짐)
+	//而⑦뀗痢�留뚮뱾湲�硫붿씤�섏씠吏�                //login �먯꽌 makeConView 濡��섏씠吏��꾪솚 (login�섏씠吏�jps濡�諛붾�硫��꾩슂�놁뼱吏�
 	@RequestMapping("/makeConView.do")
 	public ModelAndView makeConMain() throws Exception{
 	
@@ -56,7 +56,7 @@ public class ContentsController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		//컨텐츠 리스트 가지고 온 후 컨텐츠 만드는 메인페이지로 전환
+		//而⑦뀗痢�由ъ뒪��媛��怨�����而⑦뀗痢�留뚮뱶��硫붿씤�섏씠吏�줈 �꾪솚
 		List<Contents> conList = contentsService.getAllCon();
 		modelAndView.addObject("conList", conList);
 		
@@ -68,7 +68,7 @@ public class ContentsController {
 	}
 	
 	
-	//컨텐츠 유형
+	//而⑦뀗痢��좏삎
 	@RequestMapping("/makeCon.do")
 	public ModelAndView makeCon() throws Exception{
 	
@@ -80,7 +80,7 @@ public class ContentsController {
 		return modelAndView;
 	}
 	
-	//모듈 만들기
+	//紐⑤뱢 留뚮뱾湲�
 	@RequestMapping("/makeMod.do")
 	public ModelAndView makeMod() throws Exception{
 	

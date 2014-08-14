@@ -1,5 +1,9 @@
 package spring.service.student;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
 
 	//constructor
 	public StudentServiceImpl() {
-		System.out.println("::" + getClass() + "default 생성자...");	}
+		System.out.println("::" + getClass() + "default constructor start..");	}
 
 	@Override
 	public int addStudent(Student student) throws Exception {
@@ -42,6 +46,11 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public int updateLeaveStudent(Student student) throws Exception {		
 		return studentDao.updateLeaveStudent(student);
+	}
+
+	@Override
+	public List<Student> getStudentList() throws Exception {
+		return studentDao.getStudentList();
 	}
 
 }

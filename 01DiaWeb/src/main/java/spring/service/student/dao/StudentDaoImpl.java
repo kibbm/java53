@@ -1,5 +1,7 @@
 package spring.service.student.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +25,7 @@ public class StudentDaoImpl implements StudentDao {
 	
 	//constructor	
 	public StudentDaoImpl() {
-		System.out.println("::" + getClass() + "default 시작...");
+		System.out.println("::" + getClass() + "default constructor start...");
 	}
 
 	@Override
@@ -44,6 +46,12 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public int updateLeaveStudent(Student student) throws Exception {
 		return sqlSession.update("StudentMapper.updateLeaveStudent", student);
+	}
+
+	@Override
+	public List<Student> getStudentList() throws Exception {
+		System.out.println("DaoImpl/getStudentList()::==" + sqlSession.selectList("StudentMapper.getStudentList"));
+		return sqlSession.selectList("StudentMapper.getStudentList");
 	}
 
 }

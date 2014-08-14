@@ -9,12 +9,13 @@ public class Student {
 	private String password;
 	private String email;
 	private String userName;
-	private String birthdate;	//나이 확인 위한 생년월일
+	private String birthdate;	//for checking age
 	private String phone;
-	private String addr;	
-	private String level;		//레벨	
-	private Date joindate;		//가입일
-	private boolean flag;		//탈퇴여부
+	private String addr;		//for checking delivery books
+	private String level;		
+	private Date joindate;		
+	private boolean flag;
+	private int recid;
 	
 		
 	//Constructor
@@ -124,12 +125,34 @@ public class Student {
 	}
 
 
+	//add for rowno
+	public int getRecid() {
+		return recid;
+	}
+
+
+	public void setRecid(int recid) {
+		this.recid = recid;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Student [userId=" + userId + ", password=" + password
-				+ ", email=" + email + ", userName=" + userName
-				+ ", birthdate=" + birthdate + ", phone=" + phone + ", addr="
-				+ addr + ", level=" + level + ", joindate=" + joindate
-				+ ", flag=" + flag + "]";
-	}	
+		return "{ "+ "recid: " + recid + ", userId:\'" + userId  
+				+ "\', email:\'" + email + "\', userName:\'" + userName
+				+ "\', birthdate:\'" + birthdate + "\', phone:\'" + phone + "\', addr:\'"
+				+ addr + "\', level:\'" + level + "\', joindate:\'" + joindate
+				+ "\', flag:" + flag + "}";
+	}
+	/*@Override
+	public String toString() {
+		return "{ "+ "recid: " + recid + ", userId:\'" + userId + "\', password:\'" + password
+				+ "\', email:\'" + email + "\', userName:\'" + userName
+				+ "\', birthdate:\'" + birthdate + "\', phone:\'" + phone + "\', addr:\'"
+				+ addr + "\', level:\'" + level + "\', joindate:\'" + joindate
+				+ "\', flag:" + flag + "}";
+	}*/
+
+
+	
 }
