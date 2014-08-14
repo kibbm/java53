@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Custom styles
+   ========================================================================== */
+#word-container {
+	height: 230px;
+	padding: 50px;
+	background-color: #CEECF5;
+	font-size: 30px;
+	font-weight: bold;
+	/* text-align: center; */
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+#recBtn {
+	padding: 25px;
+}
+
+#sense-container {
+	padding: 70px;
+	background-color: #CEECF5;
+	font-size: 60px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#nextBtn {
+	margin-top: 5px;
+	margin-left: 70%;
+}
+
+#listen-container {
+	margin: 20px;
+	padding: 70px;
+	background-color: #CEECF5;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#words_ul {
+	
+}
+
+#wrtArea {
+	margin: 5px;
+}
+
+#conListBody a {
+	color: black;
+	text-decoration: none;
+}
+
+#conListBody a:hover {
+	color: #428bca;
+}
+
+#conListTab, #conListTH {
+	font-size: 25px;
+	text-align: center;
+}
+
+#conListTH {
+	font-weight: bold;
+}
+
+.login-container {
+	height: 230px;
+	padding: 50px;
+	margin-top: 20px;
+}
+
+.addUser-container, .getUser-container {
+	margin-top: 50px;
+}
+
+#addUserForm {
+	margin-top: 50px;
+}
+
+#addUserForm label.error, #loginForm label.error {
+	font-size: 0.8em;
+	color: #F00;
+	font-weight: bold;
+	display: block;
+	white-space: nowrap;
+	margin-left: 50px;
+}
+
+#addUserForm  input.error, #addUserForm select.error, #loginForm input.error, #loginForm select.error {
+	border: 1px solid red;
+}
+
+.getUserTable {
+	height: 230px;
+	width: 70%;
+	padding: 50px;
+}

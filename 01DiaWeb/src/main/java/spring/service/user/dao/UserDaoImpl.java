@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import spring.domain.User;
 
-@Repository("userDao")
+@Repository("userDaoImpl")
 public class UserDaoImpl implements UserDao {
 
 	///Field
@@ -28,10 +28,28 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("::" + getClass() + "default constructor start...");
 	}
 
-
+	@Override
+	public void addUser(User user) throws Exception {
+		sqlSession.insert("UserMapper.addUser", user);
+	}
 
 	@Override
-	public int updateUserforAdmin(User user) throws Exception {		
+	public User getUser(String userId) throws Exception {
+		return sqlSession.selectOne("UserMapper.getUser", userId);
+	}
+
+	@Override
+	public void updateUser(User user) throws Exception {		
+		sqlSession.update("UserMapper.updateUser", user);
+	}
+
+	@Override
+	public int updateLeaveUser(User user) throws Exception {
+		return sqlSession.update("UserMapper.updateLeaveUser", user);
+	}
+
+	@Override
+	public int updateUserAdmin(User user) throws Exception {		
 		return sqlSession.update("UserMapper.updateUser", user);
 	}
 

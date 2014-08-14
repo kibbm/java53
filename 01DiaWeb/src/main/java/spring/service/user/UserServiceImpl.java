@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import spring.domain.User;
 import spring.service.user.dao.UserDao;
 
-@Service("userService")
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	@Qualifier("userDao")
+	@Qualifier("userDaoImpl")
 	private UserDao userDao; 
 	
 	//set	
@@ -27,8 +27,28 @@ public class UserServiceImpl implements UserService {
 		System.out.println("::" + getClass() + "default constructor start..");	}
 
 	@Override
-	public int updateUserforAdmin(User user) throws Exception {
-		return userDao.updateUserforAdmin(user);
+	public void addUser(User user) throws Exception {
+		userDao.addUser(user);
+	}
+
+	@Override
+	public User getUser(String userId) throws Exception {
+		return userDao.getUser(userId);
+	}
+
+	@Override
+	public void updateUser(User user) throws Exception {
+		userDao.updateUser(user);
+	}
+
+	@Override
+	public int updateLeaveUser(User user) throws Exception {		
+		return userDao.updateLeaveUser(user);
+	}
+	
+	@Override
+	public int updateUserAdmin(User user) throws Exception {
+		return userDao.updateUserAdmin(user);
 	}
 
 	@Override

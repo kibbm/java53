@@ -10,8 +10,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.domain.User;
@@ -23,7 +25,7 @@ import com.google.gson.Gson;
 public class UserController {
 
 	@Autowired
-	@Qualifier("userService")
+	@Qualifier("userServiceImpl")
 	private UserService userService;
 
 	//constructor
@@ -31,9 +33,128 @@ public class UserController {
 		System.out.println("::" + getClass() + "default Constractor call...");
 	}
 
+
+	@RequestMapping("/addUserView.do")
+	public String addUserView() throws Exception {
+
+		System.out.println("/addUserView.do");
+		
+		return "/user/addUserView.jsp";
+	}
+	
+	//회원가입
+	@RequestMapping("/addUser.do")
+	public String addUser(@ModelAttribute("user") User user) throws Exception{
+		
+		System.out.println("\n::addUser() start...");
+		System.out.println("user : "+user);
+
+		userService.addUser(user);
+		
+		
+		return "redirect:/user/loginView.jsp";
+	}
+	
+	//학생 개인 정보 조회 
+	@RequestMapping("/getUser.do")
+	public String getUser(@ModelAttribute("userId") String userId, Model model) throws Exception{
+		
+		System.out.println("\n::getUser() start...");
+		User user = userService.getUser(userId);
+		System.out.println("::user : " + user);
+		
+		model.addAttribute("user", user);
+		
+		return "redirect:/user/getUser.jsp";
+	}
+	
+	//학생  정보 수정 view
+	@RequestMapping("/updateUserView.do")
+	public String updateUserView( @RequestParam("userId") String userId , Model model ) throws Exception{
+
+		System.out.println("/updateUserView.do");
+		//Business Logic
+		User user = userService.getUser(userId);
+	
+		model.addAttribute("user", user);
+		
+		return "forward:/user/updateUser.jsp";
+	}
+	
+	//학생  정보 수정
+	@RequestMapping("/updateUser.do")
+	public String updateUser( @ModelAttribute("user") User user , Model model , HttpSession session) throws Exception{
+
+		System.out.println("/updateUser.do");
+		//Business Logic
+		userService.updateUser(user);
+		
+		String sessionId=((User)session.getAttribute("user")).getUserId();
+		if(sessionId.equals(user.getUserId())){
+			session.setAttribute("user", user);
+		}
+		
+		return "redirect:/getUser.do?userId="+user.getUserId();
+	}
+	
+	
+	//회원탈퇴	
+	@RequestMapping("/updateLeaveUser.do")
+	public int updateLeaveUser( @ModelAttribute("user") User user , 
+																								Model model , HttpSession session) throws Exception{
+		
+		System.out.println("/updateLeaveUser.do");
+		//Business Logic
+		userService.updateLeaveUser(user);
+		
+		String sessionId=((User)session.getAttribute("user")).getUserId();
+		if(sessionId.equals(user.getUserId())){
+			session.setAttribute("user", user);
+		}
+		
+		//세션 끊기
+		session.invalidate();
+		
+		return 0;
+		
+	}
+		
+	@RequestMapping("/loginView.do")
+	public String loginView() throws Exception{
+		
+		System.out.println("/loginView.do");
+
+		return "redirect:/user/loginView.jsp";
+	}
+	
+	@RequestMapping("/login.do")
+	public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
+		
+		System.out.println("/login.do");
+		//Business Logic
+		User dbUser=userService.getUser(user.getUserId());
+		
+		if( user.getPassword().equals(dbUser.getPassword())){
+			session.setAttribute("user", dbUser);
+		}
+		System.out.println("userId : " + user);
+		
+		return "/conList.do";
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session ) throws Exception{
+		
+		System.out.println("/logout.do");
+		
+		session.invalidate();
+		
+		return "redirect:/user/loginView.jsp";
+	}
+	
 	//update user info by user
 		@RequestMapping("/updateUserforAdmin.do")
-		public ModelAndView updateUserforAdmin(@ModelAttribute("user") User user,
+		public ModelAndView updateUserAdmin(@ModelAttribute("user") User user,
 				String list,
 				HttpServletRequest request,
 				HttpSession session) throws Exception{
@@ -50,11 +171,10 @@ public class UserController {
 				System.out.println(userMap.get("recid") + "," + userMap.get("email"));
 				
 				//?????
-				int recid = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recid"))));//double->int
-				//int recid = (Integer)userMap.get("recid");
+				//recid = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recid"))));//double->int
+				int recid = (Integer)userMap.get("recid");
 				
-				
-				System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
+				//System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
 				//vo. where recid
 				
 				user.setRecid(recid);
@@ -67,7 +187,7 @@ public class UserController {
 			
 						
 			
-			int result = userService.updateUserforAdmin(user);
+			int result = userService.updateUserAdmin(user);
 			System.out.println("result : " + result);
 			/* ..!
 			 * String sessionId = ((Student) session.getAttribute("student")).getUserId();

@@ -17,7 +17,10 @@ public class User {
 	private boolean flag;
 	private int recid;
 	
-		
+	private String phone1;
+	private String phone2;
+	private String phone3;
+	
 	//Constructor
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -74,26 +77,41 @@ public class User {
 		this.birthdate = birthdate;
 	}
 
-
 	public String getPhone() {
+		phone = phone1 +"-"+ phone2 +"-"+ phone3;
+		
 		return phone;
 	}
 
-
 	public void setPhone(String phone) {
 		this.phone = phone;
+		
+		if(phone != null){
+			phone1 = phone.split("-")[0];
+			phone2 = phone.split("-")[1];
+			phone3 = phone.split("-")[2];
+		}
 	}
 
+	public String getPhone1() {
+		return phone1;
+	}
 
+	public String getPhone2() {
+		return phone2;
+	}
+
+	public String getPhone3() {
+		return phone3;
+	}
+	
 	public String getAddr() {
 		return addr;
 	}
 
-
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-
 
 	public String getLevel() {
 		return level;
@@ -133,7 +151,6 @@ public class User {
 	public void setRecid(int recid) {
 		this.recid = recid;
 	}
-
 
 	@Override
 	public String toString() {

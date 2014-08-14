@@ -20,7 +20,43 @@
 		<result property="flag" column="flag" jdbcType="BOOLEAN"/>		
 	</resultMap>
 
-	<update id="updateUser">
+	<insert id="addUser" parameterType="user">
+		INSERT
+		INTO user (id, password, email, name, birthdate, phone, addr, level,  join_date, flag)
+		VALUES (#{userId}, #{password}, #{email}, #{userName}, #{birthdate}, #{phone}, #{addr},
+		'대기', SYSDATE(), true)	
+	</insert>
+
+	<select id="getUser" parameterType="string" resultMap="userSelectMap">
+		SELECT
+		id, password, email, name, birthdate, phone, addr, level,  join_date 
+		FROM user
+		where id=#{value}	
+	</select>
+
+	<update id="updateUser" 	parameterType="user">
+		UPDATE user
+		<set>
+			password = #{password},
+			email = #{email}, 
+			name = #{userName}, 
+			birthdate = #{birthdate},
+			phone = #{phone}, 
+			addr = #{addr},  
+			level = #{level}		
+		</set>
+		WHERE id=#{userId}
+	</update>
+	
+	<update id="updateLeaveUser">
+		UPDATE user
+		<set>			
+			flag = false		
+		</set>
+		WHERE id=#{userId}	
+	</update>
+	
+	<update id="updateUserAdmin">
 		UPDATE user
 		<set>
 			password = #{password},
