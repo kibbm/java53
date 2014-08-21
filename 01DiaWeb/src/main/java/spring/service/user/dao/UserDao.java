@@ -21,7 +21,6 @@ public interface UserDao {
 	//updateStudent
 	public int updateUserAdmin(User user) throws Exception;	
 	
-	
 	//getStudentList
 	public List<User> getUserList() throws Exception;
 	

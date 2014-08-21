@@ -58,7 +58,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int getRecId() throws Exception {
-		// TODO Auto-generated method stub
 		return userDao.getRecId();
 	}
 

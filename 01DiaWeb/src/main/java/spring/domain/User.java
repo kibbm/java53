@@ -15,7 +15,7 @@ public class User {
 	private String level;		
 	private Date joindate;		
 	private boolean flag;
-	private int recId;
+	private int recid;
 	
 	private String phone1;
 	private String phone2;
@@ -160,17 +160,17 @@ public class User {
 
 	//add for rowno
 	public int getRecId() {
-		return recId;
+		return recid;
 	}
 
 
 	public void setRecId(int recid) {
-		this.recId = recId;
+		this.recid = recid;
 	}
 
 	@Override
 	public String toString() {
-		return "{ "+ "recId: " + recId + ", userId:\'" + userId  
+		return "{ "+ "recid: " + recid + ", userId:\'" + userId  
 				+ "\', email:\'" + email + "\', userName:\'" + userName
 				+ "\', birthdate:\'" + birthdate + "\', phone:\'" + phone + "\', addr:\'"
 				+ addr + "\', level:\'" + level + "\', joindate:\'" + joindate
@@ -180,7 +180,7 @@ public class User {
 
 	/*	@Override
 	public String toString() {
-		return "User [recId=" + recId 
+		return "User [recid=" + recid 
 				+ ", userName=" + userName
 				+ ", userId=" + userId 
 				+ ", level=" + level 

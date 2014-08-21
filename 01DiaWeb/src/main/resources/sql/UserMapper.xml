@@ -7,7 +7,7 @@
 <mapper namespace="UserMapper">
 
 	<resultMap id="userSelectMap" type="user">
-		<result property="recId" column="recid" jdbcType="INTEGER"/>
+		<result property="recid" column="recid" jdbcType="INTEGER"/>
 		<result property="userId" column="id" jdbcType="VARCHAR"/>
 		<result property="password" column="password" jdbcType="VARCHAR"/>
 		<result property="email" column="email" jdbcType="VARCHAR"/>
@@ -36,7 +36,7 @@
 
 	<select id="getrecId" parameterType="integer" resultMap="userSelectMap">
 		SELECT
-		MAX(recId)
+		MAX(recid)
 		FROM user
 	</select>
 	

@@ -168,13 +168,13 @@ public class UserController {
 				System.out.println(userMap.get("recid") + "," + userMap.get("email"));
 				
 				//?????
-				//recId = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recId"))));//double->int
-				int recId = (Integer)userMap.get("recid");
+				//recid = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recid"))));//double->int
+				int recid = (Integer)userMap.get("recid");
 				
-				//System.out.println(recId + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
-				//vo. where recId
+				//System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
+				//vo. where recid
 				
-				user.setRecId(recId);
+				user.setRecId(recid);
 				user.setEmail((String) userMap.get("email"));
 				user.setPhone((String)userMap.get("phone"));
 				user.setAddr((String) userMap.get("addr"));
