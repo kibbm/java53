@@ -3,7 +3,7 @@ package spring.domain;
 public class Contents {
 	
 	//field
-	private int conIndex;
+	private int conNo;
 	private String conTitle;
 	private String conLevel;
 	private int conOrder;
@@ -12,15 +12,16 @@ public class Contents {
 	public Contents() {	
 	}
 
-	//getter, setter
-	public int getConIndex() {
-		return conIndex;
+
+	//getter&setter
+	public int getConNo() {
+		return conNo;
 	}
 
-	public void setConIndex(int conIndex) {
-		this.conIndex = conIndex;
+	public void setConNo(int conNo) {
+		this.conNo = conNo;
 	}
-
+	
 	public String getConTitle() {
 		return conTitle;
 	}
@@ -47,12 +48,10 @@ public class Contents {
 	
 	@Override
 	public String toString(){
-		return "Module [conIndex=" + conIndex + ", conTitle=" + conTitle
+		return "Module [conNo=" + conNo + ", conTitle=" + conTitle
 				+ ", conLevel=" + conLevel + ", conOrder=" + conOrder + "]";		
 	}
-	
 
-	
 	
 	
 }

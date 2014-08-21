@@ -34,6 +34,24 @@ public class ContentsServiceImpl implements ContentsService {
 	@Override
 	public List<Contents> getAllCon() throws Exception {
 		return contentsDao.getAllCon();
+	}
+
+	//Admin :: 레벨에 따른 컨텐츠 갯수
+	@Override
+	public int getConCount(String conLevel) throws Exception {
+		return contentsDao.getConCount(conLevel);
+	}
+
+	//Admin:: Contents insert
+	@Override
+	public int addCon(Contents con) throws Exception {
+		return contentsDao.addCon(con);
+	}
+
+	//Admin:: module insert에 필요한 cNo 값 가져오기
+	@Override
+	public int getCNo(Contents con) throws Exception {
+		return contentsDao.getCNo(con);
 	}	
 
 }

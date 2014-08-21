@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=euc-kr" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
 
 <body>
 
-	<!-- header & ¸Ş´º¹Ù  -->
+	<!-- header & ë©”ë‰´ë°”  -->
 
 	<!-- Main container -->
 
@@ -67,7 +67,7 @@
 			</div>
 
 
-			<!-- next ´ÙÀ½¹öÆ° -->
+			<!-- next ë‹¤ìŒë²„íŠ¼ -->
 			<div class="row" id="nextBtn">
 				<div class="col-sm-3">
 					<a href="/roleplay.do?conIndex=${conIndex}&modOrder=5"> <input type="hidden"
@@ -102,7 +102,7 @@
 			ew = list.quiz[i].enword;
 			$("#sensegroup_ul").append("<li>"+ew+"</li>");
 
-			 //¹®ÀåÀ» ' 'À» ÆÄ½ÌÇÏ¿© +±âÈ£·Î ´ëÃ¼.
+			 //ë¬¸ì¥ì„ ' 'ì„ íŒŒì‹±í•˜ì—¬ +ê¸°í˜¸ë¡œ ëŒ€ì²´.
 			/* var enword = list.quiz[i].enword;
 			var chg = enword.split(" ");
 			for(var a=0; a<chg.length; a++){
@@ -112,7 +112,7 @@
 			
 			
 			
-			//http://tts-api.com/tts.mp3?q=such+a+feelings+coming+over+me ·Î ¹Ù²î¾î¾ßÇÔ.(¶ç¾î¾²±â-> +)
+			//http://tts-api.com/tts.mp3?q=such+a+feelings+coming+over+me ë¡œ ë°”ë€Œì–´ì•¼í•¨.(ë„ì–´ì“°ê¸°-> +)
 			$("#word-container").append("<audio id="+list.quiz[i].enword+" src='http://tts-api.com/tts.mp3?q="+list.quiz[i].enmp3+"'>");
 		};
 	
@@ -130,7 +130,7 @@
 		    $("#sensegroup_ul li").css('list-style-type', 'none');
 		    $("#sensegroup_ul").css({'padding-left':'0','text-align':'center'});
 		    $("#sensegroup_ul li:eq("+k+")").animate({fontSize:"2em"},"slow");
-			myAudio.play();	//´Ü¾î°¡ ¾Æ´Ï¶ó ÀÛ¹®ÀÌ´Ï±î...	
+			myAudio.play();	//ë‹¨ì–´ê°€ ì•„ë‹ˆë¼ ì‘ë¬¸ì´ë‹ˆê¹Œ...	
 		    
 			if(k == (list_li.length-1)){
 				$("#btn").attr({type:"hidden"});

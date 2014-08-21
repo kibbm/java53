@@ -39,6 +39,24 @@ public class ContentsDaoImpl implements ContentsDao{
 	@Override
 	public List<Contents> getAllCon() throws Exception {
 		return sqlSession.selectList("ContentsMapper.getAllCon");
+	}
+
+	//Admin :: 레벨에 따른 컨텐츠 갯수
+	@Override
+	public int getConCount(String conLevel) throws Exception {
+		return sqlSession.selectOne("ContentsMapper.getConCount", conLevel);
+	}
+
+	//Admin:: Contents insert
+	@Override
+	public int addCon(Contents con) throws Exception {
+		return sqlSession.insert("ContentsMapper.addCon", con);
+	}
+
+	//Admin:: module insert에 필요한 cNo 값 가져오기
+	@Override
+	public int getCNo(Contents con) throws Exception {
+		return sqlSession.selectOne("ContentsMapper.getCNo", con);
 	}	
 	
 

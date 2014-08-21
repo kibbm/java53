@@ -56,6 +56,14 @@ dependencies {
   compile 'log4j:log4j:1.2.17'
   compile 'org.mybatis:mybatis:3.2.7'
   compile 'commons-collections:commons-collections:3.2'
+  
+    compile 'org.json:json:20090211'
+  compile 'org.json:json:20140107'
+  compile 'com.googlecode.json-simple:json-simple:1.1.1'
+  
+  compile 'org.springframework:spring-web:4.0.6.RELEASE'
+  compile 'org.springframework:spring-web:3.1.1.RELEASE'
+  
   //compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
   
   // testCompile로 지정된 라이브러리 => 컴파일할 때 사용하고, 테스트할 때 사용한다. 배치할 때는 제외한다.

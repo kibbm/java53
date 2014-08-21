@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=euc-kr"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
 
 <body>
 
-	<!-- header & ¸Þ´º¹Ù  -->
+	<!-- header & ë©”ë‰´ë°”  -->
 
 	<!-- Main container -->
 
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 
-			<!--writing³ìÀ½½Ã Áö½Ã¹®  -->
+			<!--writingë…¹ìŒì‹œ ì§€ì‹œë¬¸  -->
 			<div class="row">
 				<h4>
 					<div class="col-sm-6" id="subRubric"></div>
@@ -66,23 +66,23 @@
 
 
 			<div class="row" id="wrtArea">
-				<input type="text" class="form-control" value="³ª´Â Çàº¹ÇÏ´Ù.">
+				<input type="text" class="form-control" value="ë‚˜ëŠ” í–‰ë³µí•˜ë‹¤.">
 			</div>
 			<br>
 			
 
-			<!-- ÇÐ½ÀÁ¾·á ÆË¾÷ :: jQuery  -->
+			<!-- í•™ìŠµì¢…ë£Œ íŒì—… :: jQuery  -->
 
 			<!-- bootstrap alert -->
-			<button class="my_popup_open btn btn-default btn-lg">È®ÀÎ</button>
+			<button class="my_popup_open btn btn-default btn-lg">í™•ì¸</button>
 			
 			<div id="my_popup" class="well">
-				<h4>ÇÐ½ÀÀ» Á¾·áÇÏ½Ã°Ú½À´Ï±î?</h4>
+				<h4>í•™ìŠµì„ ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?</h4>
 				<a href="/conList.do"> 
 				<input type="button"
-					class="btn btn-default" value="Á¾·á">
+					class="btn btn-default" value="ì¢…ë£Œ">
 				</a>
-				<button class="my_popup_close btn btn-default">Ãë¼Ò</button>
+				<button class="my_popup_close btn btn-default">ì·¨ì†Œ</button>
 			
 			</div>		
 			

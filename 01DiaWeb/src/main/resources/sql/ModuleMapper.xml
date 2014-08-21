@@ -6,17 +6,25 @@
 <mapper namespace="ModuleMapper">
  
 	<resultMap id="ModuleSelectMap" type="module">
-		<result property="conIndex" column="cno" jdbcType="INTEGER"/>
-		<result property="modType" column="mod_type" jdbcType="VARCHAR" />		
-		<result property="modOrder" column="mod_order" jdbcType="VARCHAR" />
-		<result property="modQuiz" column="mod_quiz" jdbcType="VARCHAR" />
+	    <result property="modNo" 	column="mno" 		jdbcType="INTEGER"/>
+		<result property="conNo" 	column="cno" 		jdbcType="INTEGER"/>
+		<result property="modType" 	column="mod_type" 	jdbcType="VARCHAR" />		
+		<result property="modOrder" column="mod_order" 	jdbcType="INTEGER" />
+		<result property="modQuiz" 	column="mod_quiz" 	jdbcType="VARCHAR" />
 	</resultMap>
 
 	<!-- sample test -->
 	<select id="getModule" parameterType="map" resultType="String">
 	SELECT Mod_quiz
 	FROM module
-	WHERE cno=#{conIndex} and mod_order=#{modOrder} 
+	WHERE cno=#{conNo} and mod_order=#{modOrder} 
 	</select>
+
+	<!-- module 추가 -->
+	<insert id="addModule" parameterType="module">
+		INSERT
+		INTO module(cno, mod_type, mod_order, mod_quiz)
+		VALUES (#{conNo:INTEGER}, #{modType:VARCHAR}, #{modOrder:INTEGER}, #{modQuiz:VARCHAR})
+	</insert>
 		
 </mapper>

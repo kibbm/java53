@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="shortcut icon" href="/dist/ico/favicon.png">
 
@@ -15,80 +13,57 @@
 <link href="/dist/css/jumbotron.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="/custom/css/custom2.css" rel="stylesheet">
-
+<link href="/dist/css/custom2.css" rel="stylesheet">
 
 </head>
-
-
 <body>
 	<!-- main navbar -->
-	<jsp:include page="../common/navBar.jsp"/>
+	<jsp:include page="../common/navBar.jsp"/> 
 
 	<div class="container">
 		<div class="basic-container">
-
+		
 			<div class="row" style="margin-bottom: 20px;">
 				<h2>
-					<span class="label label-success">ÄÁÅÙÃ÷ ¸¸µé±â</span>
-					<small>&nbsp; "°ü¸®ÀÚ"´ÔÀÇ ÄÁÅÙÃ÷ ¸¸µé±â ÆäÀÌÁö ÀÔ´Ï´Ù.</small>
+					<span class="label label-success">ì»¨í…ì¸  ë§Œë“¤ê¸°</span>
 				</h2>
 			</div>
 
-			<!-- ÄÁÅÙÃ÷ ¸¸µé±â ¸ŞÀÎ ÆäÀÌÁö :: ¸¸µé¾î ³õÀº ÄÁÅÙÃ÷ ¸®½ºÆ® º¸ÀÌ±â  -->
+			<form class="form-horizontal" role="form" action="/makeCon.do">
+				<div class="form-group">
+					<label for="conName" class="col-md-2 control-label">ì»¨í…ì¸  ì´ë¦„</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="conName" name="conTitle"
+							placeholder="ì˜ˆ) TED 01">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="conLevel" class="col-md-2 control-label">í•™ìŠµë ˆë²¨</label>
+					<div class="col-md-8">
+						<select class="form-control" id="conLevel" name="conLevel">
+							<option value="primary">ì´ˆë“±</option>
+							<option value="secondary">ì¤‘ê³ ë“±</option>
+							<option value="general">ì¼ë°˜</option>
+						</select>
+					</div>
+				</div>
+				<!-- ë ˆë²¨ë³„  ì»¨í…ì¸  ìˆœì„œ ì–´ë–»ê²Œ ê°€ì§€ê³  ì˜¬ ê²ƒì¸ê°€? -->
+				<div class="form-group">
+					<label for="conOrder" class="col-md-2 control-label">ì»¨í…ì¸ ìˆœì„œ</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="conOrder" name="conOrder"
+							value="${conOrder}">
+					</div>
+				</div>
 
-			<!-- ÄÁÅÙÃ÷ Å×ÀÌºí -->
-			<table class="table table-hover" id="conListTab">
-				<thead id="conListTH">
-					<tr>
-						<td>no</td>
-						<td>contents title</td>
-						<td>contents level</td>
-					</tr>
-				</thead>
-
-				<tbody id="conListBody">
-					<tr>
-						<c:set var="i" value="0" />
-						<c:forEach var="con" items="${conList}">
-							<tr id="conRow">
-								<c:set var="i" value="${ i+1 }" />
-								<div class="col-sm-3">
-									<td>${i}</td>
-								</div>
-
-								<div class="col-sm-4">
-									<td><a
-										href="/writing.do?conIndex=${con.conIndex}&modOrder=1">${con.conTitle}</a>
-									</td>
-								</div>
-								
-								<div class="col-sm-3">
-									<td>${con.conLevel}</td>
-								</div>
-
-								<div class="col-sm-4">
-									<td>
-										<button class="btn btn-default" id="update"><span class="glyphicon glyphicon-edit"></span>&nbsp;¼öÁ¤</button>
-										<button class="btn btn-default"  name="delBtn" onClick="javascript:delMod(this);"><span class="glyphicon glyphicon-remove"></span>&nbsp;»èÁ¦</button>
-									</td>
-								</div>
-							</tr>
-						</c:forEach>
-					</tr>
-				</tbody>
-			</table>
-
-			<!-- ÄÁÅÙÃ÷ ¸¸µé±â ¹öÆ°  -->
-			<hr>
-			<div class="col-sm-offset-9 col-sm-1">
-				<a href="../admin/makeCon.jsp">
-					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>&nbsp;ÄÁÅÙÃ÷ ¸¸µé±â</button>
-				</a>
-			</div>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-8">
+						<button type="submit" class="btn btn-default">ë‹¤ìŒ</button>
+					</div>
+				</div>
+			</form>
 
 		</div>
-		<!-- basic-container ¿©±âºÎÅÍ ³¡  -->
 	</div>
 
 	<hr>
@@ -113,31 +88,6 @@
 
 	<!-- SlidesJS Required: Link to jquery.slides.js -->
 	<script src="/dist/js/jquery.slides.min.js"></script>
-
-	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
-	<script>
-		$(function() {
-			$('#slides').slidesjs({
-				width : 940,
-				height : 528,
-				play : {
-					active : true,
-					auto : true,
-					interval : 4000,
-					swap : true
-				}
-			});
-		});
-	</script>
-	
-	<script>
-	function delMod(object){
-		var index = $("#conListBody #conRow [name=delBtn]").index(object);
-		$("#conListBody #conRow").eq(index).remove();			
-	}	
-	</script>
-
-
 
 </body>
 </html>

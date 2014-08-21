@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=euc-kr"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
 
 <body>
 
-	<!-- header & ¸Þ´º¹Ù  -->
+	<!-- header & ë©”ë‰´ë°”  -->
 
 	<!-- Main container -->
 
@@ -57,7 +57,7 @@
 			</div>
 			<br>
 
-			<!-- next ´ÙÀ½¹öÆ° -->
+			<!-- next ë‹¤ìŒë²„íŠ¼ -->
 			<div class="row" id="nextBtn">
 				<div class="col-sm-3">
 					<a href="/words.do?conIndex=${conIndex}&modOrder=2"> <input type="button"

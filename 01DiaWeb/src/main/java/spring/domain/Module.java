@@ -5,22 +5,32 @@ import java.io.Serializable;
 public class Module implements Serializable {
 	
 	//field
-	private int conIndex;
+	private int modNo;
+	private int conNo;
 	private String modType;
-	private String modOrder;
+	private int modOrder;
 	private String modQuiz;
 	
 	//constructor
 	public Module() {
 	}
 
+	
 	//getter&setter
-	public int getConIndex() {
-		return conIndex;
+	public int getModNo() {
+		return modNo;
 	}
 
-	public void setConIndex(int conIndex) {
-		this.conIndex = conIndex;
+	public void setModNo(int modNo) {
+		this.modNo = modNo;
+	}
+
+	public int getConNo() {
+		return conNo;
+	}
+
+	public void setConNo(int conNo) {
+		this.conNo = conNo;
 	}
 
 	public String getModType() {
@@ -31,11 +41,11 @@ public class Module implements Serializable {
 		this.modType = modType;
 	}
 
-	public String getModOrder() {
+	public int getModOrder() {
 		return modOrder;
 	}
 
-	public void setModOrder(String modOrder) {
+	public void setModOrder(int modOrder) {
 		this.modOrder = modOrder;
 	}
 
@@ -49,8 +59,11 @@ public class Module implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Module [conIndex=" + conIndex + ", modType=" + modType
+		return "Module [conNO=" + conNo + ", modNo="+modNo+", modType=" + modType
 				+ ", modOrder=" + modOrder + ", modQuiz=" + modQuiz + "]";
 	}
+
+
+	
 	
 }

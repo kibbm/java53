@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 	<!-- main navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,25 +18,25 @@
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">About <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">DIA English ¼Ò°³</a></li>
-							<li><a href="#">DIA Ä¿¸®Å§·³ ¾È³»</a></li>
-							<li><a href="#">DIA APP ¾È³»</a></li>
+							<li><a href="#">DIA English ì†Œê°œ</a></li>
+							<li><a href="#">DIA ì»¤ë¦¬í˜ëŸ¼ ì•ˆë‚´</a></li>
+							<li><a href="#">DIA APP ì•ˆë‚´</a></li>
 						</ul></li>
-					<li><a href="#contact">ÇÐ½À¿ø¸®</a></li>
-					<li><a href="/01DiaWeb/conList.do">¸ÅÀÏÈÆ·Ã</a></li>
+					<li><a href="#contact">í•™ìŠµì›ë¦¬</a></li>
+					<li><a href="/01DiaWeb/conList.do">ë§¤ì¼í›ˆë ¨</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Ä¿¹Â´ÏÆ¼ <b class="caret"></b></a>
+						data-toggle="dropdown">ì»¤ë®¤ë‹ˆí‹° <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">°øÁö»çÇ×</a></li>
-							<li><a href="#">ÀÚÀ¯°Ô½ÃÆÇ</a></li>
+							<li><a href="#">ê³µì§€ì‚¬í•­</a></li>
+							<li><a href="#">ìžìœ ê²Œì‹œíŒ</a></li>
 							<li><a href="#">Q&A</a></li>
 						</ul></li>
-					<!-- admin ÀÎ °æ¿ì¿¡¸¸ º¸ÀÌ´Â ¸Þ´º -->
-					<li><a href="/makeConView.do">°ü¸®ÀÚÆäÀÌÁö</a></li>
+					<!-- admin ì¸ ê²½ìš°ì—ë§Œ ë³´ì´ëŠ” ë©”ë‰´ -->
+					<li><a href="/makeConView.do">ê´€ë¦¬ìžíŽ˜ì´ì§€</a></li>
 				</ul>
 				<div class="navbar-form navbar-right">
-					<button type="button" class="btn btn-success">·Î±×¾Æ¿ô</button>
-					<button type="button" class="btn btn-success">³»Á¤º¸</button>
+					<button type="button" class="btn btn-success">ë¡œê·¸ì•„ì›ƒ</button>
+					<button type="button" class="btn btn-success">ë‚´ì •ë³´</button>
 				</div>
 			</div>
 			<!--/.navbar-collapse -->

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -26,23 +26,23 @@
 
 <body>
 
-	<!-- header & ∏ﬁ¥∫πŸ  -->
+	<!-- header & Î©îÎâ¥Î∞î  -->
 
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 
 	<div class="container">
 		<div class="basic-container">
 
-			<!--ø©±‚∫Œ≈Õ Ω√¿€  -->
+			<!--Ïó¨Í∏∞Î∂ÄÌÑ∞ ÏãúÏûë  -->
 			<div class="row">
 				<div class="col-sm-2">
 					<h2>
-						<span class="label label-warning">∏≈¿œ«–Ω¿ ∏Ò∑œ </span>
+						<span class="label label-warning">Îß§ÏùºÌïôÏäµ Î™©Î°ù </span>
 					</h2>
 				</div>
 			</div>
 
-			<!-- ƒ¡≈Ÿ√˜ ≈◊¿Ã∫Ì -->
+			<!-- Ïª®ÌÖêÏ∏† ÌÖåÏù¥Î∏î -->
 			<table class="table table-hover" id="conListTab">
 				<thead id="conListTH">
 					<tr>
@@ -74,7 +74,7 @@
 			
 		<!-- footer -->	
 			
-		<!-- basic-container ø©±‚∫Œ≈Õ ≥°  -->
+		<!-- basic-container Ïó¨Í∏∞Î∂ÄÌÑ∞ ÎÅù  -->
 		</div>
 	</div>
 	<!-- /container -->

@@ -35,6 +35,12 @@ public class ModuleDaoImpl implements ModuleDao{
 		System.out.println(modResult);
 		return modResult;
 	}
+
+	//module insert
+	@Override
+	public int addMod(Module module) throws Exception {
+		return sqlSession.insert("ModuleMapper.addModule", module);
+	}
 	
 
 }

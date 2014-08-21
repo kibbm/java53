@@ -6,7 +6,7 @@
 <mapper namespace="ContentsMapper">
  
 	<resultMap id="conSelectMap" type="contents">
-		<result property="conIndex" column="cno" jdbcType="INTEGER"/>
+		<result property="conNo" 	column="cno" 	   jdbcType="INTEGER"/>
 		<result property="conTitle" column="con_title" jdbcType="VARCHAR" />
 		<result property="conLevel" column="con_level" jdbcType="VARCHAR" />
 		<result property="conOrder" column="con_order" jdbcType="INTEGER"/>
@@ -24,4 +24,26 @@
 		cno, con_title, con_level, con_order
 		FROM Contents
 	</select>	
+
+	<select id="getConCount" parameterType="String" resultType="Integer">
+		SELECT count(*)
+		FROM Contents
+		WHERE con_level=#{conLevel}
+	</select>	
+	
+	<!-- Admin:: contents 추가 -->
+	<insert id="addCon" parameterType="contents">
+		INSERT
+		INTO Contents(con_title, con_level, con_order)
+		VALUES (#{conTitle:VARCHAR}, #{conLevel:VARCHAR}, #{conOrder:INTEGER})
+	</insert>	
+	
+	<!-- Admin:: module insert에 필요한 cNo 값 가져오기 -->
+	<select id="getCNo" parameterType="contents" resultType="Integer">
+	    SELECT cno
+		FROM Contents
+		WHERE con_title=#{conTitle} AND con_level=#{conLevel}
+	</select>
+	
+	
 </mapper>

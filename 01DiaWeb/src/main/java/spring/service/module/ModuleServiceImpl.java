@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import spring.domain.Module;
 import spring.service.module.dao.ModuleDao;
 
 @Service("moduleService")
@@ -30,39 +31,45 @@ public class ModuleServiceImpl implements ModuleService {
 	
 	///Method
 	@Override
-	public String getWriting(int conIndex, String modOrder) throws Exception {
+	public String getWriting(int conNo, int modOrder) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("conIndex", conIndex);
+		map.put("conNo", conNo);
 		map.put("modOrder", modOrder);
 	
 		return moduleDao.getModule(map);
 	}
 	
 	@Override
-	public String getWords(int conIndex, String modOrder) throws Exception {
+	public String getWords(int conNo, int modOrder) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("conIndex", conIndex);
+		map.put("conNo", conNo);
 		map.put("modOrder", modOrder);
 		
 		return moduleDao.getModule(map);
 	}
 	
 	@Override
-	public String getSensegroup(int conIndex, String modOrder) throws Exception {
+	public String getSensegroup(int conNo, int modOrder) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("conIndex", conIndex);
+		map.put("conNo", conNo);
 		map.put("modOrder", modOrder);
 		
 		return moduleDao.getModule(map);
 	}
 
 	@Override
-	public String getRoleplay(int conIndex, String modOrder) throws Exception {
+	public String getRoleplay(int conNo, int modOrder) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("conIndex", conIndex);
+		map.put("conNo", conNo);
 		map.put("modOrder", modOrder);
 		
 		return moduleDao.getModule(map);
+	}
+
+
+	@Override
+	public int addMod(Module module) throws Exception {
+		return moduleDao.addMod(module);
 	}
 
 

@@ -28,31 +28,31 @@ public class ModuleController {
 	}
 	
 	@RequestMapping("/writing.do")
-	public ModelAndView getWriting(@RequestParam("conIndex") int conIndex,
-									@RequestParam("modOrder") String modOrder) throws Exception{
+	public ModelAndView getWriting(@RequestParam("conNo") int conNo,
+									@RequestParam("modOrder") int modOrder) throws Exception{
 	
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		String returnWrt = moduleService.getWriting(conIndex, modOrder);
+		String returnWrt = moduleService.getWriting(conNo, modOrder);
 		modelAndView.addObject("returnWrt", returnWrt);
-		modelAndView.addObject("conIndex", conIndex);
+		modelAndView.addObject("conNo", conNo);
 		
 		modelAndView.setViewName("/module/writing.jsp");		
 		return modelAndView;
 	}
 	
 	@RequestMapping("/words.do")
-	public ModelAndView getList(@RequestParam("conIndex") int conIndex,
-									@RequestParam("modOrder") String modOrder) throws Exception{
+	public ModelAndView getList(@RequestParam("conNo") int conNo,
+									@RequestParam("modOrder") int modOrder) throws Exception{
 
 	
 		ModelAndView modelAndView = new ModelAndView();
 			
 		
-		String returnList = moduleService.getWords(conIndex, modOrder);
+		String returnList = moduleService.getWords(conNo, modOrder);
 		modelAndView.addObject("returnList", returnList);
-		modelAndView.addObject("conIndex", conIndex);
+		modelAndView.addObject("conNo", conNo);
 		
 		modelAndView.setViewName("/module/words.jsp");	
 			
@@ -60,16 +60,16 @@ public class ModuleController {
 	}
 	
 	@RequestMapping("/sensegroup.do")
-	public ModelAndView getSensegroup(@RequestParam("conIndex") int conIndex,
-										@RequestParam("modOrder") String modOrder) throws Exception{
+	public ModelAndView getSensegroup(@RequestParam("conNo") int conNo,
+										@RequestParam("modOrder") int modOrder) throws Exception{
 		
 		System.out.println(":: ==> getSensegroup() start...... ");
 	
 		ModelAndView modelAndView = new ModelAndView();
 			
-		String returnSensegroup = moduleService.getSensegroup(conIndex, modOrder);
+		String returnSensegroup = moduleService.getSensegroup(conNo, modOrder);
 		modelAndView.addObject("returnSensegroup", returnSensegroup);
-		modelAndView.addObject("conIndex", conIndex);
+		modelAndView.addObject("conNo", conNo);
 		
 		modelAndView.setViewName("/module/sensegroup.jsp");
 		
@@ -77,15 +77,15 @@ public class ModuleController {
 	}
 	
 	@RequestMapping("/roleplay.do")
-	public ModelAndView getRolePlay(@RequestParam("conIndex") int conIndex,
-									@RequestParam("modOrder") String modOrder) throws Exception{
+	public ModelAndView getRolePlay(@RequestParam("conNo") int conNo,
+									@RequestParam("modOrder") int modOrder) throws Exception{
 		System.out.println(":: ==> getRolePlay() start...... ");
 	
 		ModelAndView modelAndView = new ModelAndView();	
 		
-		String returnRolePlay = moduleService.getRoleplay(conIndex, modOrder);
+		String returnRolePlay = moduleService.getRoleplay(conNo, modOrder);
 		modelAndView.addObject("returnRolePlay", returnRolePlay);
-		modelAndView.addObject("conIndex", conIndex);
+		modelAndView.addObject("cno", conNo);
 		
 		modelAndView.setViewName("/module/rolePlay.jsp");
 				
@@ -94,14 +94,14 @@ public class ModuleController {
 
 	
 	@RequestMapping("/writingRect.do")
-	public ModelAndView getWritingRect(@RequestParam("conIndex") int conIndex,
-										@RequestParam("modOrder") String modOrder,
+	public ModelAndView getWritingRect(@RequestParam("conNo") int conNo,
+										@RequestParam("modOrder") int modOrder,
 										@ModelAttribute("Contents")Contents con) throws Exception{
 	
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/module/writingRect.jsp");
 		
-		String returnWrt = moduleService.getWriting(conIndex, modOrder);
+		String returnWrt = moduleService.getWriting(conNo, modOrder);
 		modelAndView.addObject("returnWrt", returnWrt);
 		
 		return modelAndView;
