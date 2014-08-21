@@ -60,4 +60,9 @@ public class UserDaoImpl implements UserDao {
 		return sqlSession.selectList("UserMapper.getUserList");
 	}
 
+	@Override
+	public int getRecId() throws Exception {
+		return sqlSession.selectOne("UserMapper.getRecId");
+	}
+
 }

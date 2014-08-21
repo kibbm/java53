@@ -7,7 +7,7 @@
 <mapper namespace="UserMapper">
 
 	<resultMap id="userSelectMap" type="user">
-		<!-- <result property="recid" column="recid" jdbcType="Integer"/> -->
+		<result property="recId" column="recid" jdbcType="INTEGER"/>
 		<result property="userId" column="id" jdbcType="VARCHAR"/>
 		<result property="password" column="password" jdbcType="VARCHAR"/>
 		<result property="email" column="email" jdbcType="VARCHAR"/>
@@ -22,8 +22,8 @@
 
 	<insert id="addUser" parameterType="user">
 		INSERT
-		INTO user (id, password, email, name, birthdate, phone, addr, level,  join_date, flag)
-		VALUES (#{userId}, #{password}, #{email}, #{userName}, #{birthdate}, #{phone}, #{addr},
+		INTO user (recid, id, password, email, name, birthdate, phone, addr, level,  join_date, flag)
+		VALUES (#{recid}, #{userId}, #{password}, #{email}, #{userName}, #{birthdate}, #{phone}, #{addr},
 		'대기', SYSDATE(), true)	
 	</insert>
 
@@ -34,16 +34,20 @@
 		where id=#{value}	
 	</select>
 
+	<select id="getrecId" parameterType="integer" resultMap="userSelectMap">
+		SELECT
+		MAX(recId)
+		FROM user
+	</select>
+	
 	<update id="updateUser" 	parameterType="user">
 		UPDATE user
 		<set>
-			password = #{password},
 			email = #{email}, 
 			name = #{userName}, 
 			birthdate = #{birthdate},
 			phone = #{phone}, 
-			addr = #{addr},  
-			level = #{level}		
+			addr = #{addr}
 		</set>
 		WHERE id=#{userId}
 	</update>

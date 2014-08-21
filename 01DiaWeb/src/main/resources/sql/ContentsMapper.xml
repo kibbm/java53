@@ -6,7 +6,7 @@
 <mapper namespace="ContentsMapper">
  
 	<resultMap id="conSelectMap" type="contents">
-		<result property="conIndex" column="con_index" jdbcType="INTEGER"/>
+		<result property="conIndex" column="cno" jdbcType="INTEGER"/>
 		<result property="conTitle" column="con_title" jdbcType="VARCHAR" />
 		<result property="conLevel" column="con_level" jdbcType="VARCHAR" />
 		<result property="conOrder" column="con_order" jdbcType="INTEGER"/>
@@ -14,14 +14,14 @@
 	
 	<select id="getConList" parameterType="String" resultMap="conSelectMap">
 	SELECT 
-	con_index, con_title, con_level, con_order
+	cno, con_title, con_level, con_order
 	FROM Contents
 	WHERE con_level=#{conLevel}
 	</select>
 
 	<select id="getAllCon" resultMap="conSelectMap">
 		SELECT 
-		con_index, con_title, con_level, con_order
+		cno, con_title, con_level, con_order
 		FROM Contents
 	</select>	
 </mapper>

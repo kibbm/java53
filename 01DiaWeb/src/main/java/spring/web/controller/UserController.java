@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.domain.User;
@@ -47,12 +48,13 @@ public class UserController {
 	public String addUser(@ModelAttribute("user") User user) throws Exception{
 		
 		System.out.println("\n::addUser() start...");
-		System.out.println("user : "+user);
+	
+		int newRecId = userService.getRecId() +1;
+		user.setRecId(newRecId);
 
 		userService.addUser(user);
-		
-		
-		return "redirect:/user/loginView.jsp";
+			
+		return "redirect:/main.html";
 	}
 	
 	//학생 개인 정보 조회 
@@ -60,12 +62,11 @@ public class UserController {
 	public String getUser(@ModelAttribute("userId") String userId, Model model) throws Exception{
 		
 		System.out.println("\n::getUser() start...");
-		User user = userService.getUser(userId);
-		System.out.println("::user : " + user);
 		
+		User user = userService.getUser(userId);
 		model.addAttribute("user", user);
 		
-		return "redirect:/user/getUser.jsp";
+		 return "forward:/user/getUser.jsp";
 	}
 	
 	//학생  정보 수정 view
@@ -80,12 +81,13 @@ public class UserController {
 		
 		return "forward:/user/updateUser.jsp";
 	}
-	
+	 
 	//학생  정보 수정
 	@RequestMapping("/updateUser.do")
 	public String updateUser( @ModelAttribute("user") User user , Model model , HttpSession session) throws Exception{
 
 		System.out.println("/updateUser.do");
+		
 		//Business Logic
 		userService.updateUser(user);
 		
@@ -93,7 +95,7 @@ public class UserController {
 		if(sessionId.equals(user.getUserId())){
 			session.setAttribute("user", user);
 		}
-		
+				
 		return "redirect:/getUser.do?userId="+user.getUserId();
 	}
 	
@@ -106,17 +108,11 @@ public class UserController {
 		System.out.println("/updateLeaveUser.do");
 		//Business Logic
 		userService.updateLeaveUser(user);
-		
-		String sessionId=((User)session.getAttribute("user")).getUserId();
-		if(sessionId.equals(user.getUserId())){
-			session.setAttribute("user", user);
-		}
-		
+				
 		//세션 끊기
 		session.invalidate();
 		
-		return 0;
-		
+		return 0;		
 	}
 		
 	@RequestMapping("/loginView.do")
@@ -134,12 +130,13 @@ public class UserController {
 		//Business Logic
 		User dbUser=userService.getUser(user.getUserId());
 		
+		System.out.println("getUserId: "+user.getUserId());
+		
 		if( user.getPassword().equals(dbUser.getPassword())){
 			session.setAttribute("user", dbUser);
 		}
-		System.out.println("userId : " + user);
 		
-		return "/conList.do";
+		return "redirect:/main.html";
 	}
 	
 	@RequestMapping("/logout.do")
@@ -149,7 +146,7 @@ public class UserController {
 		
 		session.invalidate();
 		
-		return "redirect:/user/loginView.jsp";
+		return "redirect:/main.html";
 	}
 	
 	//update user info by user
@@ -171,13 +168,13 @@ public class UserController {
 				System.out.println(userMap.get("recid") + "," + userMap.get("email"));
 				
 				//?????
-				//recid = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recid"))));//double->int
-				int recid = (Integer)userMap.get("recid");
+				//recId = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recId"))));//double->int
+				int recId = (Integer)userMap.get("recid");
 				
-				//System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
-				//vo. where recid
+				//System.out.println(recId + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
+				//vo. where recId
 				
-				user.setRecid(recid);
+				user.setRecId(recId);
 				user.setEmail((String) userMap.get("email"));
 				user.setPhone((String)userMap.get("phone"));
 				user.setAddr((String) userMap.get("addr"));

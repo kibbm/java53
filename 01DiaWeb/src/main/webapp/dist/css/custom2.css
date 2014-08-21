@@ -70,15 +70,15 @@
 	margin-top: 20px;
 }
 
-.addUser-container, .getUser-container {
+.addUser-container, .getUser-container, .updateUser-container {
 	margin-top: 50px;
 }
 
-#addUserForm {
+#addUserForm, #updateUserForm, #getUserForm {
 	margin-top: 50px;
 }
 
-#addUserForm label.error, #loginForm label.error {
+#addUserForm label.error, #loginForm label.error,  #updateUserForm label.error{
 	font-size: 0.8em;
 	color: #F00;
 	font-weight: bold;
@@ -93,6 +93,6 @@
 
 .getUserTable {
 	height: 230px;
-	width: 70%;
+	width: 70%;u
 	padding: 50px;
 }

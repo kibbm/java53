@@ -17,4 +17,4 @@
     <bean id="viewResolver" 
     			class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 
-</beans>
+	</beans>

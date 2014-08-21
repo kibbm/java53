@@ -24,38 +24,8 @@
 
 <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="main.html">DIA ENGLISH</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="main.html">Home</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">About <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">DIA English 소개</a></li>
-							<li><a href="#">DIA 커리큘럼 안내</a></li>
-							<li><a href="#">DIA APP 안내</a></li>
-						</ul></li>
-					<li><a href="#contact">학습원리</a></li>
-					<li><a href="/conList.do">매일훈련</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">커뮤니티 <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">공지사항</a></li>
-							<li><a href="#">자유게시판</a></li>
-							<li><a href="#">Q&A</a></li>
-						</ul></li>
-			</div>
-			<!--/.navbar-collapse -->
-		</div>
+	<div class="container">
+		<div id="header"></div>
 	</div>
 
 	<!-- Main jumbotron for a primary marketing message or call to action -->
@@ -80,7 +50,9 @@
 					<div>
 						<input type="submit" id="btnLogin" value="로그인" /> <br>
 					</div>
-					<a href="/addUserView.do">회원가입</a>
+					<div style="position: right", "padding:0">
+						<a href="/addUserView.do" id="signin">회원가입</a>
+					</div>
 				</form>
 				<!-- form -->
 			</section>
@@ -88,9 +60,9 @@
 
 			<hr>
 
-			<footer>
-				<p>&copy; Company 2013</p>
-			</footer>
+			<div class="container">
+				<div id="footer"></div>
+			</div>
 		</div>
 	</div>
 	<!-- /container -->
@@ -131,23 +103,24 @@
 
 	<script>
 		$(document).ready(function() {
-			$("#loginForm").submit(function() {
-				var formData = $(this).serialize();
-				$.post('login.do', formData, processData);
-				function processData(data) {
-					if (data =='pass') {
-						$('#content').html('<p> 로그인이 되었습니다!</p>');
-					} else {
-						if (! $('#fail').length) {
-							$('#content').prepend('<p id="fail"> 로그인 정보가 올바르지 않습니다. 다시 시도해 주세요.</p>');
-						}
-					}
-				}// end processData
-				return false;
-			}); //end submit
-		}); //end ready
+		$("#loginForm").submit(function() {
+			var formData = $(this).serialize();
+			$.post('login.do', formData, processData);
+			function processData(data) {
+				if (data == 'pass') {
+					$('#content').html('<p> 로그인이 되었습니다!</p>');
+				} else {
+				if (!$('#fail').length) {
+					$('#content').prepend(
+					'<p id="fail"> 로그인 정보가 올바르지 않습니다. 다시 시도해 주세요.</p>');
+				}
+			}
+		}// end processData
+		return false;
+		}); //end submit
+	}); //end ready
 	</script>
-	
+
 	<!-- End SlidesJS Required -->
 </body>
 </html>

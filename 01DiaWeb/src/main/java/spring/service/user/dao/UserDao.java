@@ -25,4 +25,7 @@ public interface UserDao {
 	//getStudentList
 	public List<User> getUserList() throws Exception;
 	
+	//get RECID
+	public int getRecId() throws Exception;
+	
 }
