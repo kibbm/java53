@@ -49,8 +49,8 @@ public class UserController {
 		
 		System.out.println("\n::addUser() start...");
 	
-		int newRecId = userService.getRecId() +1;
-		user.setRecId(newRecId);
+	//	int newRecid = userService.getRecid() +1;
+	//	user.setRecid(newRecid);
 
 		userService.addUser(user);
 			
@@ -174,7 +174,7 @@ public class UserController {
 				//System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
 				//vo. where recid
 				
-				user.setRecId(recid);
+				user.setRecid(recid);
 				user.setEmail((String) userMap.get("email"));
 				user.setPhone((String)userMap.get("phone"));
 				user.setAddr((String) userMap.get("addr"));

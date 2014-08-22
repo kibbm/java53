@@ -18,12 +18,12 @@
 </head>
 <body>
 	<!-- main navbar -->
-	<jsp:include page="../common/navBar.jsp"/> 
+	<jsp:include page="../header.jsp"/> 
 
 	<div class="container">
 		<div class="basic-container">
 		
-			<div class="row" style="margin-bottom: 20px;">
+			<div class="row"  style="margin-bottom: 20px; padding-left: 16px">
 				<h2>
 					<span class="label label-success">컨텐츠 만들기</span>
 				</h2>

@@ -159,12 +159,12 @@ public class User {
 	}
 
 	//add for rowno
-	public int getRecId() {
+	public int getRecid() {
 		return recid;
 	}
 
 
-	public void setRecId(int recid) {
+	public void setRecid(int recid) {
 		this.recid = recid;
 	}
 
@@ -178,7 +178,7 @@ public class User {
 	}
 	
 
-	/*	@Override
+/*		@Override
 	public String toString() {
 		return "User [recid=" + recid 
 				+ ", userName=" + userName

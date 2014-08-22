@@ -23,7 +23,6 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<!-- <li><a href="main1.html">Home</a></li> -->
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">About <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -43,8 +42,9 @@
 						</ul></li>
 						
 					<!-- admin 인 경우에만 보이는 메뉴 -->
-					<c:if test="${user.level == 'admin'}">
-					<li><a href="/makeConView.do">관리자페이지</a></li>
+					<c:if test="${user.userId == 'admin'}">
+					<!-- <li><a href="/makeConMain.do">관리자페이지</a></li> -->
+					<li><a href="/makeConMain.do">컨텐츠만들기</a></li>
 					</c:if>
 				</ul>
 				

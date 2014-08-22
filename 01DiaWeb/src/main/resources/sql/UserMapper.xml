@@ -20,13 +20,20 @@
 		<result property="flag" column="flag" jdbcType="BOOLEAN"/>		
 	</resultMap>
 
-	<insert id="addUser" parameterType="user">
+	<!-- <insert id="addUser" parameterType="user">
 		INSERT
 		INTO user (recid, id, password, email, name, birthdate, phone, addr, level,  join_date, flag)
 		VALUES (#{recid}, #{userId}, #{password}, #{email}, #{userName}, #{birthdate}, #{phone}, #{addr},
-		'대기', SYSDATE(), true)	
-	</insert>
+		'lev0', SYSDATE(), true)	
+	</insert> -->
 
+	<insert id="addUser" parameterType="user">
+		INSERT
+		INTO user (id, password, email, name, birthdate, phone, addr, level,  join_date, flag)
+		VALUES (#{userId}, #{password}, #{email}, #{userName}, #{birthdate}, #{phone}, #{addr},
+		'lev0', SYSDATE(), true)	
+	</insert>
+	
 	<select id="getUser" parameterType="string" resultMap="userSelectMap">
 		SELECT
 		id, password, email, name, birthdate, phone, addr, level,  join_date 
@@ -34,7 +41,7 @@
 		where id=#{value}	
 	</select>
 
-	<select id="getrecId" parameterType="integer" resultMap="userSelectMap">
+	<select id="getRecid" parameterType="integer" resultMap="userSelectMap">
 		SELECT
 		MAX(recid)
 		FROM user

@@ -57,8 +57,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int getRecId() throws Exception {
-		return userDao.getRecId();
+	public int getRecid() throws Exception {
+		return userDao.getRecid();
 	}
 
 }

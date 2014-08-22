@@ -35,7 +35,7 @@
 
 <body>
 	<!-- main navbar -->
-	<jsp:include page="../common/navBar.jsp"/> 
+	<jsp:include page="../header.jsp"/> 
 
 <div class="container">
 		<div class="basic-container">
