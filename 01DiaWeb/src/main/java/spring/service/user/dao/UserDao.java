@@ -18,13 +18,14 @@ public interface UserDao {
 	//회원탈퇴
 	public int updateLeaveUser(User user) throws Exception;
 
+	//get RECID
+	public int getRecid() throws Exception;
+
 	//updateStudent
-	public int updateUserAdmin(User user) throws Exception;	
+	public int updateUserforAdmin(User user) throws Exception;	
 	
 	//getStudentList
 	public List<User> getUserList() throws Exception;
 	
-	//get RECID
-	public int getRecid() throws Exception;
 	
 }

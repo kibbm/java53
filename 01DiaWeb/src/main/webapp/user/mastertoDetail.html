@@ -1,107 +1,101 @@
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<meta charset="UTF-8">
 <head>
     <title>User List</title>
     <link rel="stylesheet" type="text/css" href="../dist/css/w2ui-1.4.1.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="../dist/js/w2ui-1.4.1.js"></script> 
+ 
 </head>
 <body>
 
+<!-- view -->
     <div id="grid1" style="height:380px"></div>    
-    <div id="grid2" style="height:250px; width:50%"></div>     
+    <div id="grid2" style="height:270px; width:50%"></div>     
 <br>
 
-mastertoDetail.html
-
+<!-- level::lev0('ëŒ€ê¸°'), lev1('ì´ˆë“±'), lve2('ì¤‘ê³ '), lev3('ì¼ë°˜') -->
 <script type="text/javascript">
-var stuLevel=[
-  {id:1, text:'ÃÊµî'},
-  {id:2, text:'Áß°í'},
-  {id:3, text:'ÀÏ¹İ'},  
-  {id:4, text:'´ë±â'}
-];
-
 $(function () {	
+	
+	$('#grid2').hide();
     $('#grid1').w2grid({ 
         name: 'grid1', 
-        header: 'Master',
-        url: '../listUserData.do',
+        header: 'íšŒì›ê´€ë¦¬',
+        url: '../listUserData.do',    
         show: { 
         	header:true,
             toolbar: true,
             footer: true,
-            lineNumbers : true,      
-            selectColumn:true,
+            lineNumbers: true,
+            selectColumn:false,
             toolbarSave: true
-        },///        
-        multiSearch: false,
-        searches: [
-           { field: 'userId', caption: 'userId', type: 'text' },
-           { field: 'userName', caption: 'userName', type: 'text' },
-           { field: 'birthdate', caption: 'Birthdate', type: 'date'},
-           { field: 'level', caption: 'level', type: 'text' },
-           { field: 'joindate', caption: 'joindate', type: 'date' }
-        ],
-        columns: [                
-            { field: 'userId', caption: 'userId', size: '15%', attr: 'align=center' },            
-            { field: 'email', caption: 'Email', size: '15%', editable:{type:'text'} },
-            { field: 'userName', caption: 'userName', size: '10%', sortable:true },            
-            { field: 'birthdate', caption: 'Birthdate', size: '10%', sortable:true},            
-            { field: 'phone', caption: 'phone', size: '10%', editable:{type:'text'} },
-            { field: 'addr', caption: 'addr', size: '10%', editable:{type:'text'} },
-            { field: 'level', caption: 'level', size: '10%', sortable:true, editable:{type:'text'} 
-			            /* editable: { type: 'level', items: stuLevel, showAll: true },
-			            render: function (record, index, col_index) {
-			                var html = this.getCellValue(index, col_index);
-			                return html.text || '';
-			            } */
+        },
+        /* searches: [
+                   { field: 'userId', caption: 'ì•„ì´ë””', type: 'text' },
+                   { field: 'userName', caption: 'ì´ë¦„', type: 'text'},
+                   { field: 'birthdate', caption: 'ìƒë…„ì›”ì¼', type: 'text'}, 
+                   { field: 'level', caption: 'ë“±ê¸‰', type: 'text' },
+                   { field: 'joindate', caption: 'ê°€ì…ì¼', type: 'text' }
+                ], */
+        columns: [   
+			{ field: 'recid', caption: 'ë²ˆí˜¸', size: '5%'},
+            { field: 'userName', caption: 'ì´ë¦„Â„', size: '10%'},            
+            { field: 'userId', caption: 'ì•„ì´ë””', size: '10%' },            
+            { field: 'level', caption: 'ë“±ê¸‰', size: '5%' , editable:{type:'text'}   },
+            { field: 'email', caption: 'ì´ë©”ì¼', size: '10%', editable:{type:'text'}  },
+            { field: 'birthdate', caption: 'ìƒë…„ì›”ì¼', size: '10%' },            
+            { field: 'phone', caption: 'ì—°ë½ì²˜', size: '10%', editable:{type:'text'} },
+            { field: 'addr', caption: 'ì£¼ì†Œ', size: '20%', editable:{type:'text'} },
+            { field: 'joindate', caption: 'ê°€ì…ì¼', size: '10%'},           
+            { field: 'flag', caption: 'íƒˆí‡´', size: '5%'/* , editable: { type: 'checkbox' }  */
             },
-            { field: 'joindate', caption: 'joindate', size: '10%', sortable:true, editable:{type:'date'} },
-            { field: 'flag', caption: 'flag', size: '5%', sortable:true, editable:{type:'text'}}      
         ],
         onSave: function(event) {        	        	
-        	//alert("¼öÁ¤µÈ °ª:" + w2ui['grid1'].getChanges());//¹Ù²ï°Í¸¸ jsonÇüÅÂ.
-        	//console.log(updateContent);
+        	//alert(" w2ui['grid1'].getChanges());
+        	//console.log(updateContent);//
         	
-        	var updateContent = JSON.stringify(w2ui['grid1'].getChanges());//stringify(¹è¿­À» ¹®ÀÚ¿­jsonÀ¸·Î ¹Ù²ãÁÜ.)!!
+        	var updateContent = JSON.stringify(w2ui['grid1'].getChanges());
       	
                $.ajax({
             	type:"post",
-            	url:"/updateUserforAdmin.do",////
+            	url:"/updateUserforAdmin.do",
             	cache:false,
             	data: {
-            	    list: updateContent
-            	    ////¼öÁ¤µÈ °ªÀÇ  jsonÇüÅÂ, list¶ó´Â ÀÌ¸§À¸·Î ³Ñ±è.
+            	    list: updateContent            	    
             	},
             	success:function(response){
-            		alert('success!!!');     		
+            		alert('ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.');     		
             	}, 
             	error:function(){
             		alert('Error while request...');
             	}            	
             })            
         	console.log(event);  
-        },         
-        //////////
+        },
         onClick: function (event) {
+        	$('#grid2').show();        	
             w2ui['grid2'].clear();            
             var record = this.get(event.recid);
+			
             w2ui['grid2'].add([
-				{ recid: 0, name: 'userName:', value: record.userName },
-                { recid: 1, name: 'userId:', value: record.userId },                
-                { recid: 2, name: 'email:', value: record.email },                
-                { recid: 3, name: 'birthdate', value: record.birthdate },
-                { recid: 4, name: 'phone:', value: record.phone },
-                { recid: 5, name: 'addr:', value: record.addr },
-                { recid: 6, name: 'level:', value: record.level },
-                { recid: 7, name: 'joindate:', value: record.joindate },
-                { recid: 8, name: 'flag:', value: record.flag }
+				{ recid: 0, name: 'ì´ë¦„', value: record.userName },
+                { recid: 1, name: 'ì•„ì´ë””', value: record.userId },                
+                { recid: 2, name: 'ë“±ê¸‰', value: record.level },
+                { recid: 3, name: 'ì´ë©”ì¼', value: record.email },                
+                { recid: 4, name: 'ìƒë…„ì›”ì¼', value: record.birthdate },
+                { recid: 5, name: 'ì—°ë½ì²˜', value: record.phone },
+                { recid: 6, name: 'ì£¼ì†Œ', value: record.addr },
+                { recid: 7, name: 'ê°€ì…ì¼', value: record.joindate },
+                { recid: 8, name: 'íƒˆí‡´ì—¬ë¶€Â€', value: record.flag },
             ]);
         }
-    });    
-    $('#grid2').w2grid({ 
-        header: 'Details',
+    });  
+    
+     $('#grid2').w2grid({ 
+        header: 'ìƒì„¸ë³´ê¸°',
         show: { header: true, columnHeaders: false},
         name: 'grid2', 
         columns: [                
@@ -109,8 +103,11 @@ $(function () {
             { field: 'value', caption: 'Value', size: '100%' }
         ]
     });    
+    
+    //w2ui['grid1'].load('/listUserData.do');
 });
  </script>
-
+ 
+	
 </body>
 </html>

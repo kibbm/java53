@@ -16,7 +16,7 @@
 		<result property="phone" column="phone" jdbcType="VARCHAR"/>
 		<result property="addr" column="addr" jdbcType="VARCHAR"/>		
 		<result property="level" column="level" jdbcType="VARCHAR"/>			
-		<result property="joindate" column="join_date" jdbcType="DATE"/>
+		<result property="joindate" column="join_date" jdbcType="VARCHAR"/>
 		<result property="flag" column="flag" jdbcType="BOOLEAN"/>		
 	</resultMap>
 
@@ -67,25 +67,27 @@
 		WHERE id=#{userId}	
 	</update>
 	
-	<update id="updateUserAdmin">
+	<update id="updateUserforAdmin" parameterType="user">
 		UPDATE user
-		<set>
-			password = #{password},
-			email = #{email},			
-			birthdate = #{birthdate}, 
-			phone = #{phone}, 
-			addr = #{addr}					
-		</set>
-		WHERE recid=#{recid}
+		<set>			
+			<if test="userName != null">name = #{userName},</if>
+			<if test="level != null"> level = #{level},</if>	 
+			<if test="email != null">email = #{email},</if> 			
+			<if test="phone != null">phone = #{phone},</if> 
+			<if test="addr != null">addr = #{addr},</if>			
+			<if test="flag != true">flag = #{flag}</if>				
+		</set>		
+		 WHERE recid = #{recid} 
 	</update>
 		
 	<!-- SQL : SELECT LIST -->
  	<select  id="getUserList"  resultMap="userSelectMap"> 	
-        SELECT @rownum:=@rownum+1 recid, 
+       SELECT u.recid,  
         	u.id, u.password, u.email, u.name, u.birthdate, u.phone, u.addr, u.level, u.join_date, u.flag
-        FROM user u,
-        	(SELECT @rownum:=0) r		
-	 </select> 
+        FROM user u        			
+        ORDER BY
+        	u.join_date desc
+	 </select>  
 	 
 </mapper>		
 		 

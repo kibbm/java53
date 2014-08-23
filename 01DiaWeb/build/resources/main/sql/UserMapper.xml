@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="UserMapper">
+
+	<resultMap id="userSelectMap" type="user">
+		<result property="recid" column="recid" jdbcType="INTEGER"/>
+		<result property="userId" column="id" jdbcType="VARCHAR"/>
+		<result property="password" column="password" jdbcType="VARCHAR"/>
+		<result property="email" column="email" jdbcType="VARCHAR"/>
+		<result property="userName" column="name" jdbcType="VARCHAR"/>
+		<result property="birthdate" column="birthdate" jdbcType="VARCHAR"/>
+		<result property="phone" column="phone" jdbcType="VARCHAR"/>
+		<result property="addr" column="addr" jdbcType="VARCHAR"/>		
+		<result property="level" column="level" jdbcType="VARCHAR"/>			
+		<result property="joindate" column="join_date" jdbcType="VARCHAR"/>
+		<result property="flag" column="flag" jdbcType="BOOLEAN"/>		
+	</resultMap>
+
+	<!-- <insert id="addUser" parameterType="user">
+		INSERT
+		INTO user (recid, id, password, email, name, birthdate, phone, addr, level,  join_date, flag)
+		VALUES (#{recid}, #{userId}, #{password}, #{email}, #{userName}, #{birthdate}, #{phone}, #{addr},
+		'lev0', SYSDATE(), true)	
+	</insert> -->
+
+	<insert id="addUser" parameterType="user">
+		INSERT
+		INTO user (id, password, email, name, birthdate, phone, addr, level,  join_date, flag)
+		VALUES (#{userId}, #{password}, #{email}, #{userName}, #{birthdate}, #{phone}, #{addr},
+		'lev0', SYSDATE(), true)	
+	</insert>
+	
+	<select id="getUser" parameterType="string" resultMap="userSelectMap">
+		SELECT
+		id, password, email, name, birthdate, phone, addr, level,  join_date 
+		FROM user
+		where id=#{value}	
+	</select>
+
+	<select id="getRecid" parameterType="integer" resultMap="userSelectMap">
+		SELECT
+		MAX(recid)
+		FROM user
+	</select>
+	
+	<update id="updateUser" 	parameterType="user">
+		UPDATE user
+		<set>
+			email = #{email}, 
+			name = #{userName}, 
+			birthdate = #{birthdate},
+			phone = #{phone}, 
+			addr = #{addr}
+		</set>
+		WHERE id=#{userId}
+	</update>
+	
+	<update id="updateLeaveUser">
+		UPDATE user
+		<set>			
+			flag = false		
+		</set>
+		WHERE id=#{userId}	
+	</update>
+	
+	<update id="updateUserforAdmin" parameterType="user">
+		UPDATE user
+		<set>			
+			<if test="userName != null">name = #{userName},</if>
+			<if test="level != null"> level = #{level},</if>	 
+			<if test="email != null">email = #{email},</if> 			
+			<if test="phone != null">phone = #{phone},</if> 
+			<if test="addr != null">addr = #{addr},</if>			
+			<if test="flag != true">flag = #{flag}</if>				
+		</set>		
+		 WHERE recid = #{recid} 
+	</update>
+		
+	<!-- SQL : SELECT LIST -->
+ 	<select  id="getUserList"  resultMap="userSelectMap"> 	
+<!--         SELECT @rownum:=@rownum+1 recid, 
+        	u.id, u.password, u.email, u.name, u.birthdate, u.phone, u.addr, u.level, u.join_date, u.flag
+        FROM user u,
+        	(SELECT @rownum:=0) r		
+        ORDER BY
+        	join_date desc -->
+        	
+       SELECT u.recid,  
+        	u.id, u.password, u.email, u.name, u.birthdate, u.phone, u.addr, u.level, u.join_date, u.flag
+        FROM user u        			
+        ORDER BY
+        	u.join_date desc
+	 </select>  
+	 
+</mapper>		
+		 

@@ -49,8 +49,14 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int updateUserAdmin(User user) throws Exception {		
-		return sqlSession.update("UserMapper.updateUser", user);
+	public int getRecid() throws Exception {
+		return sqlSession.selectOne("UserMapper.getRecid");
+	}
+
+	@Override
+	public int updateUserforAdmin(User user) throws Exception {
+		System.out.println("Dao updateUserforAdmin user : " + user);		
+		return sqlSession.update("UserMapper.updateUserforAdmin", user);
 	}
 
 
@@ -60,9 +66,5 @@ public class UserDaoImpl implements UserDao {
 		return sqlSession.selectList("UserMapper.getUserList");
 	}
 
-	@Override
-	public int getRecid() throws Exception {
-		return sqlSession.selectOne("UserMapper.getRecid");
-	}
 
 }

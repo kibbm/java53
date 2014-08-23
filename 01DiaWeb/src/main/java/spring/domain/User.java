@@ -13,7 +13,7 @@ public class User {
 	private String phone;
 	private String addr;		//for checking delivery books
 	private String level;		
-	private Date joindate;		
+	private String joindate;		
 	private boolean flag;
 	private int recid;
 	
@@ -139,12 +139,15 @@ public class User {
 	}
 
 
-	public Date getJoindate() {
+	
+
+
+	public String getJoindate() {
 		return joindate;
 	}
 
 
-	public void setJoindate(Date joindate) {
+	public void setJoindate(String joindate) {
 		this.joindate = joindate;
 	}
 

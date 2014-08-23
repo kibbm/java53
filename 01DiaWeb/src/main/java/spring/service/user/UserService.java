@@ -19,7 +19,7 @@ public interface UserService {
 	public int updateLeaveUser(User user) throws Exception;
 	
 	//updateUser
-	public int updateUserAdmin(User user) throws Exception;
+	public int updateUserforAdmin(User user) throws Exception;
 	
 	//getUserList
 	public List<User> getUserList() throws Exception;

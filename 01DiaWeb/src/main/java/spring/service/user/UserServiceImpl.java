@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public int updateUserAdmin(User user) throws Exception {
-		return userDao.updateUserAdmin(user);
+	public int updateUserforAdmin(User user) throws Exception {		
+		return userDao.updateUserforAdmin(user);
 	}
 
 	@Override

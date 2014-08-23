@@ -1,6 +1,7 @@
 package spring.web.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.domain.User;
@@ -150,56 +150,56 @@ public class UserController {
 	}
 	
 	//update user info by user
-		@RequestMapping("/updateUserforAdmin.do")
-		public ModelAndView updateUserAdmin(@ModelAttribute("user") User user,
-				String list,
-				HttpServletRequest request,
-				HttpSession session) throws Exception{
-			
-			System.out.println("\n::updateUserforAdmin.do () start...");
-			
-			Gson gson = new Gson();
-			ArrayList itemList = gson.fromJson(list, ArrayList.class);			
-			Map userMap;
-						
-			
-			for (Object item : itemList) {
-				userMap = (Map)item;
-				System.out.println(userMap.get("recid") + "," + userMap.get("email"));
-				
-				//?????
-				//recid = Integer.parseInt(String.valueOf(Math.round((int)userMap.get("recid"))));//double->int
-				int recid = (Integer)userMap.get("recid");
-				
-				//System.out.println(recid + ", " + userMap.get("email") + ", " + userMap.get("phone") + ", " +userMap.get("phone") + ", " +userMap.get("level") + ", "+ userMap.get("flag"));
-				//vo. where recid
-				
-				user.setRecid(recid);
-				user.setEmail((String) userMap.get("email"));
-				user.setPhone((String)userMap.get("phone"));
-				user.setAddr((String) userMap.get("addr"));
-				user.setLevel((String)userMap.get("level"));
-				user.setFlag((boolean) userMap.get("flag"));
-			}			
-			
-						
-			
-			int result = userService.updateUserAdmin(user);
-			System.out.println("result : " + result);
-			/* ..!
-			 * String sessionId = ((Student) session.getAttribute("student")).getUserId();
-			
-			if(sessionId.equals(student.getUserId())){
-				session.setAttribute("student", student);
-			}*/
-			
-			ModelAndView modelAndView = new ModelAndView();
-			modelAndView.setViewName("/student/mastertoDetail.html");
-			//modelAndView.setViewName("/getStudent.do?id=" + student.getUserId());
-			
-			return modelAndView;		
-		}
+	@RequestMapping("/updateUserforAdmin.do")
+	public ModelAndView updateUserforAdmin(
+			String list,
+			HttpServletRequest request,
+			HttpSession session) throws Exception{
 		
+		System.out.println("\n::updateUserforAdmin.do () start...");
+		
+		
+		System.out.println("받은 파람 list : " + list);
+		
+		Gson gson = new Gson();
+		ArrayList itemList = gson.fromJson(list, ArrayList.class);
+		System.out.println("itemList : "+itemList);
+		Map userMap;
+		User user = new User();
+		int result=0; 
+		int resultNew=0;
+		for (Object item : itemList) {
+			userMap = (Map)item;
+
+			int recid = ((Double)userMap.get("recid")).intValue();
+			String userName = (String) userMap.get("userName");
+			String level = (String)userMap.get("level");
+			String email = (String) userMap.get("email");
+			String phone = (String)userMap.get("phone");
+			String addr = (String) userMap.get("addr");		
+			//Boolean flag = (Boolean) userMap.get("flag");
+			
+			user.setRecid(recid);
+			user.setUserName(userName);
+			user.setLevel(level);
+			user.setEmail(email);
+			user.setPhone(phone);
+			user.setAddr(addr);
+			//user.setFlag(flag); //null??
+			
+			result = userService.updateUserforAdmin(user);	
+			resultNew = result +  resultNew;//====
+			System.out.println("result : " + result + ", resultNew : " + resultNew);
+		}			
+		System.out.println("==user :" +  user);
+		System.out.println("resultNew : " + resultNew);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("user/mastertoDetail.html");
+		
+		return modelAndView;		
+	}
+	
 	@RequestMapping("/listUser.do")
 	public ModelAndView listUser(HttpServletRequest request, HttpSession session)
 			throws Exception{
@@ -211,7 +211,7 @@ public class UserController {
 		
 		return modelAndView;	
 	}
-	
+
 	@RequestMapping("/listUserData.do")
 	public ModelAndView listUserData(HttpServletRequest request, HttpSession session)
 			throws Exception{
@@ -219,16 +219,36 @@ public class UserController {
 		System.out.println("\n:: listUserData.do start...");
 		
 		List<User> list = userService.getUserList();
-		//String jsonString = "{\"records\" :" + list +"}";		
-		String jsonString = "{\"total\":" + list.size() + ", \"records\" :" + list +"}";
-		//System.out.println("\n :: jsonString : " + jsonString);
+		//from User to json
+		Gson gson = new Gson();
 		
+		for(int j=0;j<list.size();j++){
+			User user = new User();
+			
+			user.setRecid(list.get(j).getRecid());
+			user.setUserName(list.get(j).getUserName());
+			user.setUserId(list.get(j).getUserId());
+			user.setLevel(list.get(j).getLevel());
+			user.setEmail(list.get(j).getEmail());
+			user.setBirthdate(list.get(j).getBirthdate());
+			user.setPhone(list.get(j).getPhone());
+			user.setAddr(list.get(j).getAddr());
+			user.setJoindate(list.get(j).getJoindate());
+			user.setFlag(list.get(j).isFlag());
+		}
 		
+		Map map = new HashMap();
+		map.put("total", list.size());
+		map.put("records", list);
+		
+		String jsonString = gson.toJson(map);
+		System.out.println("\n :: jsonString : " + jsonString);
+				
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("jsonString", jsonString);
 		modelAndView.setViewName("user/listUserData.jsp");
 				
 		return modelAndView;		 
 	}
-	
+		
 }
