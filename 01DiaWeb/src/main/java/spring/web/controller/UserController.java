@@ -136,7 +136,7 @@ public class UserController {
 			session.setAttribute("user", dbUser);
 		}
 		
-		return "redirect:/main.html";
+		return "redirect:/index.html";
 	}
 	
 	@RequestMapping("/logout.do")
@@ -146,7 +146,7 @@ public class UserController {
 		
 		session.invalidate();
 		
-		return "redirect:/main.html";
+		return "redirect:/index.html";
 	}
 	
 	//update user info by user

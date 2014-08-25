@@ -16,6 +16,15 @@
 <!-- SlidesJS Optional: If you'd like to use this design -->
 <link href="dist/css/slide.css" rel="stylesheet">
 
+<!-- Bootstrap validation core CSS -->
+<link rel="stylesheet" href="dist/css/bootstrapValidator.min.css"/>
+
+<style>
+	 .help-block{
+	 display: hidden;
+	 }
+	</style>
+	
 </head>
 
 <body>
@@ -39,13 +48,6 @@
 			</div>
 		</div>
 	</div>
-
-		<hr>
-
-	<div class="container">
-		<div id="footer"></div>
-	</div>
-
 	<!-- /container -->
 
 
@@ -63,9 +65,10 @@
 	<!-- SlidesJS Required: Link to jquery.slides.js -->
 	<script src="dist/js/jquery.slides.min.js"></script>
 	<!-- End SlidesJS Required -->
-	<script src="login.js"></script>
 	
-	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
+	<!--Bootstrap validation -->
+	<script src="dist/js/bootstrapValidator.min.js"></script>
+	
 	<script>
 		$(function() {
 			$('#slides').slidesjs({
@@ -84,8 +87,7 @@
 	
 	<script>
 	$(document).ready(function(){
-		$('#header').load('../header.jsp');
-		$('#footer').load('../footer.jsp');
+		$('#header').load('./header.jsp');
 		});
 	</script>
 	

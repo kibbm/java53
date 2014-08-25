@@ -38,10 +38,6 @@
 	text-align: center;
 }
 
-#words_ul {
-	
-}
-
 #wrtArea {
 	margin: 5px;
 }
@@ -87,6 +83,11 @@
 	margin-top: 50px;
 }
 
+/* Bootstrap validation error message */
+.help-block {
+	font-size: 0.8em;
+}
+
 #addUserForm label.error, #loginForm label.error,  #updateUserForm label.error{
 	font-size: 0.8em;
 	color: #F00;
@@ -102,6 +103,6 @@
 
 .getUserTable {
 	height: 230px;
-	width: 70%;u
+	width: 70%;
 	padding: 50px;
 }

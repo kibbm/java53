@@ -19,7 +19,7 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="main.html">DIA ENGLISH</a>
+				<a class="navbar-brand" href="index.html">DIA ENGLISH</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -31,7 +31,7 @@
 							<li><a href="#">DIA APP 안내</a></li>
 						</ul></li>
 						
-					<li><a href="#contact">학습원리</a></li>
+					<li><a href="#contact">매일학습</a></li>
 					
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">커뮤니티 <b class="caret"></b></a>
@@ -43,8 +43,13 @@
 						
 					<!-- admin 인 경우에만 보이는 메뉴 -->
 					<c:if test="${user.userId == 'admin'}">
-					<!-- <li><a href="/makeConMain.do">관리자페이지</a></li> -->
-					<li><a href="/makeConMain.do">컨텐츠만들기</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">관리자페이지 <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/makeConMain.do">컨텐츠만들기</a></li>
+							<li><a href="#">회원관리</a></li>
+							<li><a href="#">과제관리</a></li>
+						</ul></li>				
 					</c:if>
 				</ul>
 				
@@ -53,8 +58,8 @@
 					 <c:if test="${ empty user }">
 					 <form id="loginform"  class="form-inline" role="form" method="post" action="/login.do">
 					<div class="form-group">
-						<input type="text" name="userId" id="userId" placeholder="Id" class="form-control">
-					</div>
+						 <input type="text" name="userId" id="userId" placeholder="Id" class="form-control">
+					</div>									
 					<div class="form-group">
 						<input type="password" name="password"  id="password" placeholder="Password" class="form-control">
 					</div>
@@ -64,13 +69,13 @@
 					</button>
 				</form>
 				</c:if>
-				
+								
 				<!-- 로그인 회원 메뉴 -->
 				 <c:if test="${ ! empty user }">
 				 <form  class="form-inline" role="form" method="post" action="/logout.do">
-				 <div class="form-group">
+				 <div class="form-group" id="loginMessage">
 						<p><font color="white">환영합니다. ${user.userId }님</font></p>
-					</div>
+				</div>
 				 	<input type="submit" id="btnLogout" class="btn btn-primary" value="로그아웃" />
 				 	<button type="button" class="btn btn-primary">
 						<a href="/getUser.do" id="getUser"><font color="white">내정보보기</font></a>
@@ -78,7 +83,35 @@
 					</form>
 		          </c:if>
 				</div>
-			</div>
+				</div>
 			<!--/.navbar-collapse -->
 		</div>
 	</div>
+	
+	<script>
+	$(document).ready(function() {
+    $('#loginform').bootstrapValidator({
+    	        feedbackIcons: {
+    	            valid: 'glyphicon glyphicon-ok',
+    	            invalid: 'glyphicon glyphicon-remove',
+    	            validating: 'glyphicon glyphicon-refresh'
+    	        },
+    	        fields: {
+    	            userId: {
+    	                validators: {
+    	                    notEmpty: {
+    	                        message: '아이디를 입력해주세요'
+    	                    }
+    	                }
+    	            },
+    	            password: {
+    	                validators: {
+    	                    notEmpty: {
+    	                        message: '비밀번호를 입력해주세요'
+    	                    }
+    	                }
+    	            }
+    	        }
+    	     });
+    	});		
+	</script>
