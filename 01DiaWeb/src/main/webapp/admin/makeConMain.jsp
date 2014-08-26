@@ -67,13 +67,18 @@
 									<td>${con.conLevel}</td>
 								</div>
 
-								<div class="col-sm-4">
-									<td>
-										<button class="btn btn-default" id="update"><span class="glyphicon glyphicon-edit"></span>&nbsp;수정</button>
-										<button class="btn btn-default"  name="delBtn" onClick="javascript:delMod(this);"><span class="glyphicon glyphicon-remove"></span>&nbsp;삭제</button>
-									</td>
-								</div>
-							</tr>
+									<div class="col-sm-4">
+										<td>
+											<button class="btn btn-default" id="update">
+												<span class="glyphicon glyphicon-edit"></span>&nbsp;수정
+											</button> 
+											<a href="/deleteCon.do?conNo=${con.conNo}">
+											<button class="btn btn-default" name="delBtn" onClick="javascript:delMod(this);">
+													<span class="glyphicon glyphicon-remove"></span>&nbsp;삭제
+											</button></a>
+										</td>
+									</div>
+								</tr>
 						</c:forEach>
 					</tr>
 				</tbody>

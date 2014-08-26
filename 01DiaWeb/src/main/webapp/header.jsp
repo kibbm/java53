@@ -23,32 +23,32 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+					<li><a href="#">About Us</a></li>
+				
+					<!--<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">About <b class="caret"></b></a>
-						<ul class="dropdown-menu">
+						<!-- <ul class="dropdown-menu">
 							<li><a href="#">DIA English 소개</a></li>
-							<li><a href="#">DIA 커리큘럼 안내</a></li>
-							<li><a href="#">DIA APP 안내</a></li>
-						</ul></li>
+						</ul> -->
 						
-					<li><a href="#contact">매일학습</a></li>
+					<li><a href="appEx.html">매일학습</a></li>
 					
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+<!-- 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">커뮤니티 <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">공지사항</a></li>
 							<li><a href="#">자유게시판</a></li>
 							<li><a href="#">Q&A</a></li>
 						</ul></li>
-						
+						 -->
+						 
 					<!-- admin 인 경우에만 보이는 메뉴 -->
 					<c:if test="${user.userId == 'admin'}">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">관리자페이지 <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="/makeConMain.do">컨텐츠만들기</a></li>
-							<li><a href="#">회원관리</a></li>
-							<li><a href="#">과제관리</a></li>
+							<li><a href="user/mastertoDetail.html">회원관리</a></li>
 						</ul></li>				
 					</c:if>
 				</ul>

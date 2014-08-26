@@ -20,4 +20,7 @@ public interface ModuleService {
 	
 	//module insert
 	public int addMod(Module module) throws Exception;
+	
+	//Admin:: module 삭제
+	public int removeMod(int conNo) throws Exception;
 }

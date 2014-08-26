@@ -15,7 +15,7 @@
 <link href="/dist/css/jumbotron.css" rel="stylesheet">
 
 <!-- Custom styles-->
-<link href="/custom/css/custom2.css" rel="stylesheet">heet">
+<link href="/custom/css/custom2.css" rel="stylesheet">
 
 </head>
 
@@ -70,7 +70,7 @@
 			<!-- next 다음버튼 -->
 			<div class="row" id="nextBtn">
 				<div class="col-sm-3">
-					<a href="/roleplay.do?conIndex=${conIndex}&modOrder=5"> <input type="hidden"
+					<a href="/roleplay.do?conNo=${conNo}&modOrder=5"> <input type="hidden"
 						class="btn btn-default btn-lg" id="next" value="next">
 					</a>
 				</div>

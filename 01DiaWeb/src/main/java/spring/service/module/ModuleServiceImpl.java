@@ -71,6 +71,12 @@ public class ModuleServiceImpl implements ModuleService {
 	public int addMod(Module module) throws Exception {
 		return moduleDao.addMod(module);
 	}
+	
+	
+	//Admin:: module 삭제
+	public int removeMod(int conNo) throws Exception{
+		return moduleDao.removeMod(conNo);
+	}
 
 
 

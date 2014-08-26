@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -147,9 +148,9 @@ public class ContentsController<AjaxResult> {
 		//System.out.println("con insert 성공? "+suc);
 		
 		//추가한 컨텐츠 cNo 가져오기
-		int cNo = contentsService.getCNo(con);
-		System.out.println("contents insert 후 cNo 값: "+cNo);
-			
+		//int cNo = contentsService.getCNo(con);
+		//System.out.println("contents insert 후 cNo 값: "+cNo);
+
 		HashMap hashMap;
 		
 		JSONObject jsObj = new JSONObject();
@@ -167,7 +168,7 @@ public class ContentsController<AjaxResult> {
 				hashMap= (HashMap)jsonArr.get(i);	
 				
 				//===> module객체  setter
-				module.setConNo(cNo);
+				//module.setConNo(cNo);
 			
 				String modType = hashMap.get("type").toString();
 				module.setModType(modType);
@@ -205,6 +206,36 @@ public class ContentsController<AjaxResult> {
 		return "redirect:/makeConMain.do";
 	}
 
+	
+	
+	//모듈 만들기
+	@RequestMapping("/deleteCon.do")
+	public String deleteCon(@RequestParam("conNo") int conNo,			
+							HttpSession session, Model model) throws Exception{
+		
+		System.out.println("\n ====> deleteCon() start........");
+		
+		//해당 conNo 가진  module 삭제
+		int suc = moduleService.removeMod(conNo);
+		
+		if(suc == 1){
+			System.out.println("Module delte 성공!!");		
+
+			
+			//해당 conNo 가진  contents 삭제
+			int confirm = contentsService.removeCon(conNo);
+			
+			if(confirm == 1){
+				System.out.println("Contents delte 성공!!");		
+			}
+		}
+		return "redirect:/makeConMain.do";	
+	}
+	
+	
+	
+	
+	
 
 	
 	//모듈 미리보기 데이터 전달

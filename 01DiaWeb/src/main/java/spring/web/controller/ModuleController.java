@@ -85,7 +85,7 @@ public class ModuleController {
 		
 		String returnRolePlay = moduleService.getRoleplay(conNo, modOrder);
 		modelAndView.addObject("returnRolePlay", returnRolePlay);
-		modelAndView.addObject("cno", conNo);
+		modelAndView.addObject("conNo", conNo);
 		
 		modelAndView.setViewName("/module/rolePlay.jsp");
 				

@@ -63,7 +63,7 @@
 			<!-- next 다음버튼 -->
 			<div class="row" id="nextBtn">
 				<div class="col-sm-3">
-					<a href="/sensegroup.do?conIndex=${conIndex}&modOrder=4"> <input type="hidden"
+					<a href="/sensegroup.do?conNo=${conNo}&modOrder=4"> <input type="hidden"
 						class="btn btn-default btn-lg" id="next" value="next">
 					</a>
 				</div>

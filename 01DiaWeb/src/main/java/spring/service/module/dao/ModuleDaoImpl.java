@@ -42,5 +42,10 @@ public class ModuleDaoImpl implements ModuleDao{
 		return sqlSession.insert("ModuleMapper.addModule", module);
 	}
 	
+	//Admin:: module 삭제
+	public int removeMod(int conNo) throws Exception{
+		return sqlSession.delete("ModuleMapper.removeMod", conNo);
+	}
+	
 
 }

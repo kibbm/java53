@@ -60,7 +60,7 @@
 			<!-- next 다음버튼 -->
 			<div class="row" id="nextBtn">
 				<div class="col-sm-3">
-					<a href="/words.do?conIndex=${conIndex}&modOrder=2"> <input type="button"
+					<a href="/words.do?conNo=${conNo}&modOrder=2"> <input type="button"
 						class="btn btn-default btn-lg" id="next" value="next">
 					</a>
 				</div>

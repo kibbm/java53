@@ -26,5 +26,11 @@
 		INTO module(cno, mod_type, mod_order, mod_quiz)
 		VALUES (#{conNo:INTEGER}, #{modType:VARCHAR}, #{modOrder:INTEGER}, #{modQuiz:VARCHAR})
 	</insert>
-		
+
+  	<delete id="removeMod" parameterType="Integer">
+  		DELETE
+  		FROM Module
+  		WHERE cno = #{conNo}
+  	</delete>  	
+  				
 </mapper>

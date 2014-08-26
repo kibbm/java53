@@ -64,7 +64,7 @@
 			<!-- next 다음버튼 -->
 			<div class="row" id="nextBtn">
 				<div class="col-sm-3">
-					<a href="/writingRect.do?conIndex=${conIndex}&modOrder=1"> <input type="hidden"
+					<a href="/makeConMain.do"> <input type="hidden"
 						class="btn btn-default btn-lg" id="next" value="next">
 					</a>
 				</div>
