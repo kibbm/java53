@@ -136,6 +136,8 @@ public class ContentsController<AjaxResult> {
 							HttpSession session, Model model) throws Exception{
 	
 		System.out.println("\n ====> makeMod() start........");
+		System.out.println("\n jsonData====>"+jsonData);
+		
 
 		Contents con = (Contents)session.getAttribute("contents");
 		System.out.println("Contents: "+con);
@@ -144,20 +146,21 @@ public class ContentsController<AjaxResult> {
 		System.out.println("전체 Data: "+ jsonArr);
 		
 		//contents insert 하면 => module insert
-		//int suc = contentsService.addCon(con);
-		//System.out.println("con insert 성공? "+suc);
+		int suc = contentsService.addCon(con);
+		System.out.println("con insert 성공? "+suc);
 		
 		//추가한 컨텐츠 cNo 가져오기
-		//int cNo = contentsService.getCNo(con);
-		//System.out.println("contents insert 후 cNo 값: "+cNo);
+		int cNo = contentsService.getCNo(con);
+		System.out.println("contents insert 후 cNo 값: "+cNo);
 
+		//int cNo=18;
 		HashMap hashMap;
 		
 		JSONObject jsObj = new JSONObject();
 		String modQuiz;
 		Module module = new Module();		
 		
-		int suc = 1;
+		//int suc = 1;
 		
 		if(suc == 1){		
 
@@ -168,7 +171,7 @@ public class ContentsController<AjaxResult> {
 				hashMap= (HashMap)jsonArr.get(i);	
 				
 				//===> module객체  setter
-				//module.setConNo(cNo);
+				module.setConNo(cNo);
 			
 				String modType = hashMap.get("type").toString();
 				module.setModType(modType);
@@ -195,14 +198,13 @@ public class ContentsController<AjaxResult> {
 				model.addAttribute("module", module);
 				
 				//module 객체 insert
-				//int comfirm = moduleService.addMod(module);
-				//System.out.println("module insert 성공? ==> "+comfirm);
+				int comfirm = moduleService.addMod(module);
+				System.out.println("module insert 성공? ==> "+comfirm);
 				
 				
 			}//for
 			
-		}//if
-			
+		}//if	
 		return "redirect:/makeConMain.do";
 	}
 
@@ -218,6 +220,7 @@ public class ContentsController<AjaxResult> {
 		//해당 conNo 가진  module 삭제
 		int suc = moduleService.removeMod(conNo);
 		
+		//int suc = 1;
 		if(suc == 1){
 			System.out.println("Module delte 성공!!");		
 
@@ -225,6 +228,8 @@ public class ContentsController<AjaxResult> {
 			//해당 conNo 가진  contents 삭제
 			int confirm = contentsService.removeCon(conNo);
 			
+			//int confirm = 1;
+					
 			if(confirm == 1){
 				System.out.println("Contents delte 성공!!");		
 			}
@@ -237,6 +242,11 @@ public class ContentsController<AjaxResult> {
 	
 	
 
+	
+	
+	
+	
+	
 	
 	//모듈 미리보기 데이터 전달
 	@RequestMapping("/makePrev.do")
