@@ -25,8 +25,8 @@
 		FROM Contents
 	</select>	
 
-	<select id="getConCount" parameterType="String" resultType="Integer">
-		SELECT count(*)
+	<select id="getConOrder" parameterType="String" resultType="Integer">
+		SELECT MAX(con_order)
 		FROM Contents
 		WHERE con_level=#{conLevel}
 	</select>	
@@ -45,5 +45,11 @@
 		WHERE con_title=#{conTitle} AND con_level=#{conLevel}
 	</select>
 	
+	
+  	<delete id="removeCon" parameterType="Integer">
+  		DELETE
+  		FROM Contents
+  		WHERE cno = #{conNo}
+  	</delete>  	
 	
 </mapper>

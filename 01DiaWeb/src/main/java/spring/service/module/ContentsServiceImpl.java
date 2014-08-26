@@ -38,8 +38,8 @@ public class ContentsServiceImpl implements ContentsService {
 
 	//Admin :: 레벨에 따른 컨텐츠 갯수
 	@Override
-	public int getConCount(String conLevel) throws Exception {
-		return contentsDao.getConCount(conLevel);
+	public int getConOrder(String conLevel) throws Exception {
+		return contentsDao.getConOrder(conLevel);
 	}
 
 	//Admin:: Contents insert
@@ -52,6 +52,12 @@ public class ContentsServiceImpl implements ContentsService {
 	@Override
 	public int getCNo(Contents con) throws Exception {
 		return contentsDao.getCNo(con);
+	}
+
+	//Admin:: contents 삭제
+	@Override
+	public int removeCon(int conNo) throws Exception {
+		return contentsDao.removeCon(conNo);
 	}	
 
 }

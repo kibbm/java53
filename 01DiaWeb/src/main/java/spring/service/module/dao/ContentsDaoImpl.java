@@ -43,8 +43,8 @@ public class ContentsDaoImpl implements ContentsDao{
 
 	//Admin :: 레벨에 따른 컨텐츠 갯수
 	@Override
-	public int getConCount(String conLevel) throws Exception {
-		return sqlSession.selectOne("ContentsMapper.getConCount", conLevel);
+	public int getConOrder(String conLevel) throws Exception {
+		return sqlSession.selectOne("ContentsMapper.getConOrder", conLevel);
 	}
 
 	//Admin:: Contents insert
@@ -57,7 +57,15 @@ public class ContentsDaoImpl implements ContentsDao{
 	@Override
 	public int getCNo(Contents con) throws Exception {
 		return sqlSession.selectOne("ContentsMapper.getCNo", con);
+	}
+	
+	//Admin:: contents 삭제
+	@Override
+	public int removeCon(int conNo) throws Exception {
+		return sqlSession.delete("ContentsMapper.removeCon", conNo);
 	}	
 	
+	
+
 
 }

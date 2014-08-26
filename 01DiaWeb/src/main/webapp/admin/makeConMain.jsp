@@ -25,17 +25,18 @@
 	<jsp:include page="../header.jsp"/>
 
 	<div class="container">
-		<div class="basic-container">
+		<div class="make-container">
 
 			<div class="row"  style="margin-bottom: 20px; padding-left: 16px">
 				<h2>
-					<span class="label label-success">컨텐츠 만들기</span>
+					<span class="label label-warning">컨텐츠 만들기</span>
 					<small>&nbsp; "관리자"님의 컨텐츠 만들기 페이지 입니다.</small>
 				</h2>
 			</div>
 
 			<!-- 컨텐츠 만들기 메인 페이지 :: 만들어 놓은 컨텐츠 리스트 보이기  -->
-
+			
+			<form>
 			<!-- 컨텐츠 테이블 -->
 			<table class="table table-hover" id="conListTab">
 				<thead id="conListTH">
@@ -77,7 +78,8 @@
 					</tr>
 				</tbody>
 			</table>
-
+			</form>
+			
 			<!-- 컨텐츠 만들기 버튼  -->
 			<hr>
 			<div class="col-sm-offset-9 col-sm-1">
@@ -110,24 +112,6 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 
-	<!-- SlidesJS Required: Link to jquery.slides.js -->
-	<script src="/dist/js/jquery.slides.min.js"></script>
-
-	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
-	<script>
-		$(function() {
-			$('#slides').slidesjs({
-				width : 940,
-				height : 528,
-				play : {
-					active : true,
-					auto : true,
-					interval : 4000,
-					swap : true
-				}
-			});
-		});
-	</script>
 	
 	<script>
 	function delMod(object){

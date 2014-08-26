@@ -14,11 +14,14 @@ public interface ContentsService {
 	public List<Contents> getAllCon() throws Exception;	
 	
 	//Admin :: 레벨에 따른 컨텐츠 갯수
-	public int getConCount(String conLevel) throws Exception;	
+	public int getConOrder(String conLevel) throws Exception;	
 	
 	//Admin:: Contents insert
 	public int addCon(Contents con) throws Exception;
 	
 	//Admin:: module insert에 필요한 cNo 값 가져오기
 	public int getCNo(Contents con) throws Exception;
+	
+	//Admin:: contents 삭제
+	public int removeCon(int conNo) throws Exception;
 }

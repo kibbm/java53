@@ -50,6 +50,13 @@ public class ContentsController<AjaxResult> {
 	}
 	
 	//Method
+	@RequestMapping("/app.do")
+	public String appExplain(){
+		return "forward:/app.jsp";
+	}
+	
+	
+	
 	//User :: 컨텐츠리스트
 	@RequestMapping("/conList.do")
 	public ModelAndView getConList(@ModelAttribute("Contents")Contents con) throws Exception{
@@ -59,7 +66,7 @@ public class ContentsController<AjaxResult> {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/module/contentsList.jsp");
 		
-		String conLevel = "초등";
+		String conLevel = "lev1";
 		List<Contents> conList = contentsService.getConList(conLevel);
 		modelAndView.addObject("conList", conList);
 		
@@ -67,7 +74,8 @@ public class ContentsController<AjaxResult> {
 	}
 	
 	
-	//=============> 관리자 컨텐츠 만들기 페이지
+	//======================================================================================
+	//=======>>> 관리자 컨텐츠 만들기 페이지
 	
 	//컨텐츠 만들기 메인페이지 
 	@RequestMapping("/makeConMain.do")
@@ -81,31 +89,31 @@ public class ContentsController<AjaxResult> {
 		List<Contents> conList = contentsService.getAllCon();
 		modelAndView.addObject("conList", conList);
 		
-		
 		modelAndView.setViewName("/admin/makeConMain.jsp");
-
 		
 		return modelAndView;
 	}
 
 	
+	//컨텐츠 유형 View
 	@RequestMapping("/makeConView.do")
 	public String makeConView(Model model) throws Exception{
 	
 		System.out.println("\n ====> makeConView() start........");
 
 		//user session에서 레벨 가지고오기!!
-		//컨텐츠 순서 :: 총 컨텐츠 갯수 가지고 와서 +1 (일단 돌아가게.. 추후수정)
-		String conLevel = "primary";
-		int conCount = contentsService.getConCount(conLevel);
+		String conLevel = "lev1";
+		int newOrder = contentsService.getConOrder(conLevel);
 		
-		model.addAttribute("conOrder", conCount+1);
+		model.addAttribute("conOrder", newOrder+1);
 		
 		return "forward:/admin/makeConView.jsp";
 	}
 	
+
 	
-	//컨텐츠 유형	
+	
+	//컨텐츠 session에 담아서 makeMod로 이동
 	@RequestMapping("/makeCon.do")
 	public String makeCon(@ModelAttribute("contents") Contents contents, 
 							HttpSession session, Model model) throws Exception{
@@ -115,12 +123,11 @@ public class ContentsController<AjaxResult> {
 		
 		session.setAttribute("contents", contents);
 		
-		model.addAttribute("contents", contents);
+		//model.addAttribute("contents", contents);
 		
 		return "forward:/admin/makeMod.jsp";
 	}
 	
-
 	
 	//모듈 만들기
 	@RequestMapping("/makeMod.do")
@@ -130,20 +137,86 @@ public class ContentsController<AjaxResult> {
 		System.out.println("\n ====> makeMod() start........");
 
 		Contents con = (Contents)session.getAttribute("contents");
-		System.out.println(con);
+		System.out.println("Contents: "+con);
 
 		JSONArray jsonArr = (JSONArray)JSONValue.parse(jsonData);
 		System.out.println("전체 Data: "+ jsonArr);
-		
 		
 		//contents insert 하면 => module insert
 		//int suc = contentsService.addCon(con);
 		//System.out.println("con insert 성공? "+suc);
 		
 		//추가한 컨텐츠 cNo 가져오기
-		//int cNo = contentsService.getCNo(con);
-		//System.out.println("contents insert 후 cNo 값: "+cNo);
+		int cNo = contentsService.getCNo(con);
+		System.out.println("contents insert 후 cNo 값: "+cNo);
 			
+		HashMap hashMap;
+		
+		JSONObject jsObj = new JSONObject();
+		String modQuiz;
+		Module module = new Module();		
+		
+		int suc = 1;
+		
+		if(suc == 1){		
+
+			//module insert			
+			for(int i=0; i<jsonArr.size(); i++){
+				System.out.println("\n"+i+"번째: "+jsonArr.get(i));
+				
+				hashMap= (HashMap)jsonArr.get(i);	
+				
+				//===> module객체  setter
+				module.setConNo(cNo);
+			
+				String modType = hashMap.get("type").toString();
+				module.setModType(modType);
+				
+				int modOrder = Integer.parseInt(hashMap.get("order").toString());			
+				module.setModOrder(modOrder+1);
+
+				//modQuiz setter
+				if(hashMap.get("rubric") != ""){	
+					jsObj.put("title", hashMap.get("title").toString());
+					jsObj.put("rubric", hashMap.get("rubric").toString());
+					jsObj.put("quiz", hashMap.get("quiz").toString());	
+				}else{
+					jsObj.put("title", hashMap.get("title").toString());
+					jsObj.put("quiz", hashMap.get("quiz").toString());				
+				}
+				
+				modQuiz = jsObj.toString();
+				module.setModQuiz(modQuiz);
+				
+				
+				System.out.println("module 객체==> "+module);	
+				
+				model.addAttribute("module", module);
+				
+				//module 객체 insert
+				//int comfirm = moduleService.addMod(module);
+				//System.out.println("module insert 성공? ==> "+comfirm);
+				
+				
+			}//for
+			
+		}//if
+			
+		return "redirect:/makeConMain.do";
+	}
+
+
+	
+	//모듈 미리보기 데이터 전달
+	@RequestMapping("/makePrev.do")
+	public String modPrev(String jsonData,					
+							HttpSession session, Model model) throws Exception{
+		
+		System.out.println("\n ====> modPrev() start........");
+	
+		JSONArray jsonArr = (JSONArray)JSONValue.parse(jsonData);
+		System.out.println("전체 Data: "+ jsonArr);
+		
 		HashMap hasMap;
 		
 		JSONObject jsObj = new JSONObject();
@@ -184,21 +257,33 @@ public class ContentsController<AjaxResult> {
 				module.setModQuiz(modQuiz);
 				
 				System.out.println("module 객체==> "+module);	
-				
-				//module 객체 insert
-				
-				//int comfirm = moduleService.addMod(module);
-				//System.out.println("module insert 성공? ==> "+comfirm);
-				
+				model.addAttribute("module", module);
+
 				
 			}//for
 
 			
-			
-		}//if
-			
-		return "redirect:/makeConMain.do";
+		}//if	
+		//"redirect:/modPreview.do"
+		
+		return "forward:/admin/modPreview.jsp";	
 	}
+
+	//모듈 미리보기
+	@RequestMapping("/modPreview.do")
+	public String modPreview(@ModelAttribute("module") Module module, 
+								HttpSession session, Model model) throws Exception{
+		
+		
+		System.out.println("\n ====> modPreview() start........");
+		System.out.println("modPreview: "+module);
+			
+		String returnWrt = moduleService.getWriting(1, 1);
+		
+		model.addAttribute("returnWrt", returnWrt);
+		
 	
+		return "forward:/admin/modPreview.jsp";	
+	}	
 	
 }

@@ -38,11 +38,11 @@
 	<jsp:include page="../header.jsp"/> 
 
 <div class="container">
-		<div class="basic-container">
+		<div class="make-container">
 
 			<div class="row" style="margin-bottom: 20px; padding-left: 16px;">
 				<h2>
-					<span class="label label-success">모듈 만들기</span>
+					<span class="label label-warning">모듈 만들기</span>
 				</h2>
 			</div>
 
@@ -81,13 +81,13 @@
 
 			<div class="row">
 				<div class="col-md-offset-4 col-md-2">
-					<button id="btnSubmit" type="submit" class="btn btn-default">
+					<button id="btnSubmit" class="btn btn-default" type="submit">
 					<span class="glyphicon glyphicon-check"></span>&nbsp;확인</button>
 				</div>
-				<div class="col-md-2">
+				<!-- <div class="col-md-2">
 					<button id="btnPreview" type="button" class="btn btn-default">
 					<span class="glyphicon glyphicon-eye-open"></span>&nbsp;미리보기</button>
-				</div>
+				</div> -->
 			</div>
 			
 		</form>
@@ -122,8 +122,10 @@
 
 	<!-- 확인 버튼 클릭  -->
 	<script src="/dist/js/make.js"></script>
-	
 
+	<!-- 미리보기 클릭  -->
+	<script src="/dist/js/preview.js"></script>
+	
 <!-- accordion -->
 <script>
 $(function() {
@@ -164,19 +166,21 @@ $(function() {
 		console.log('===>', index, $(element).find('h3').text());
 		
 		/* writing */
-		if($(element).find('h3').text() == '문장 작성'){
+		if($(element).find('h3').text() == '문장 작성×'){
+			console.log('ok');
 			arr[index]={order: index,
-					type:$(element).find('h3').text(),
+					type:$(element).find('#title').val(),
 					title:$(element).find('#title').val(), 
 					rubric:$(element).find('#rubric').val(), 
 					quiz:$(element).find('#quiz').val(), 
 					option:$("#wRec").val() };	
+			console.log(arr[index]);
 			
 		/* video */	
-		}else if($(element).find('h3').text() == '동영상'){
+		}else if($(element).find('h3').text() == '동영상×'){
 			var quizVD = {
 					order: index,
-					type:$(element).find('h3').text(),
+					type:$(element).find('#title').val(),
 					title:$(element).find('#title').val(), 
 					rubric:$(element).find('#rubric').val(), 
 					quiz:[]					
@@ -190,10 +194,10 @@ $(function() {
 			console.log(arr[index]);
 			
 		/* word */	
-		}else if($(element).find('h3').text() == '단어 음성 녹음'){	
+		}else if($(element).find('h3').text() == '단어 음성 녹음×'){	
 			var quizObj = {
 				order: index,
-				type:$(element).find('h3').text(),
+				type:$(element).find('#title').val(),
 				title:$(element).find('#title').val(), 
 				rubric:$(element).find('#rubric').val(),
 				quiz: []
@@ -208,10 +212,10 @@ $(function() {
 			console.log(arr[index]);
 			
 		/* Sentence */	
-		}else if($(element).find('h3').text() == '문장 음성 녹음'){	
+		}else if($(element).find('h3').text() == '문장 음성 녹음×'){	
 			var quizSen = {
 					order: index,
-					type:$(element).find('h3').text(),
+					type:$(element).find('#title').val(),
 					title:$(element).find('#title').val(), 
 					rubric:$(element).find('#rubric').val(),
 					quiz:{en:[] , ko:[], file:[]}
@@ -241,7 +245,7 @@ $(function() {
 	});
   	
 
- 	$.ajax({
+  	$.ajax({
 		 type: "POST",
 	     url: "/makeMod.do",
 	     data: {jsonData: jsonData},
@@ -254,8 +258,7 @@ $(function() {
 
 });
 </script>
-  
- 
+
 	
 </body>
 </html>

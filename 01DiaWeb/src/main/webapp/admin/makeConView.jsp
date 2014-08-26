@@ -21,11 +21,11 @@
 	<jsp:include page="../header.jsp"/> 
 
 	<div class="container">
-		<div class="basic-container">
+		<div class="make-container">
 		
 			<div class="row"  style="margin-bottom: 20px; padding-left: 16px">
 				<h2>
-					<span class="label label-success">컨텐츠 만들기</span>
+					<span class="label label-warning">컨텐츠 만들기</span>
 				</h2>
 			</div>
 
@@ -41,9 +41,9 @@
 					<label for="conLevel" class="col-md-2 control-label">학습레벨</label>
 					<div class="col-md-8">
 						<select class="form-control" id="conLevel" name="conLevel">
-							<option value="primary">초등</option>
-							<option value="secondary">중고등</option>
-							<option value="general">일반</option>
+							<option value="lev1">Lev1</option>
+							<option value="lev2">Lev2</option>
+							<option value="lev3">Lev3</option>
 						</select>
 					</div>
 				</div>
