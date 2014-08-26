@@ -54,7 +54,7 @@ public class UserController {
 
 		userService.addUser(user);
 			
-		return "redirect:/main.html";
+		return "redirect:/index.html";
 	}
 	
 	//학생 개인 정보 조회 
