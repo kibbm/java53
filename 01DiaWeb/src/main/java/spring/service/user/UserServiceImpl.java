@@ -42,11 +42,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updateLeaveUser(User user) throws Exception {		
-		return userDao.updateLeaveUser(user);
-	}
-	
-	@Override
 	public int updateUserforAdmin(User user) throws Exception {		
 		return userDao.updateUserforAdmin(user);
 	}
@@ -57,8 +52,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int getRecid() throws Exception {
-		return userDao.getRecid();
+	public int idcheck(String userId) throws Exception {
+		return userDao.idcheck(userId);
 	}
 
 }
