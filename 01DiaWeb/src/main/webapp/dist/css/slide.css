@@ -1,11 +1,14 @@
 #slides {
       display: none;
       padding-top: 20px;
+      width: 1140px;
+	  height: 550px;
     }
 
     #slides .slidesjs-navigation {
       margin-top:5px;
     }
+
 
     a.slidesjs-next,
     a.slidesjs-previous,

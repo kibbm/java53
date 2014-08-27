@@ -5,8 +5,8 @@ function addWord() {
 	var value = $("#word").val();
 
 	var html = '<div class="col-md-4">'
-				  +'<div class="close" data-dismiss="alert">'
-					 +'<input class="qword" style="width:80px; border:none; font-size: medium; " type="text" value="'+value + '">'+'&emsp;'  
+				  +'<div class="close qword" data-dismiss="alert">'
+					 +'<input class="qen" style="width:80px; border:none; font-size: medium; " type="text" value="'+value + '">'+'&emsp;'  
 				  +'<span aria-hidden="true">&times;</span>' + '</div>'
 			  +'</div>';
 
@@ -50,7 +50,7 @@ function delVD(object){
 
 /*문장 추가*/
 function addSen(){
-	var html= '<div class="row" id="senBlock">'
+	var html= '<div class="row senBlock">'
 				+'<label class="col-xs-1 control-label">영</label>'
 				+'<div class="col-md-2">'
 					+'<input type="text" class="form-control qen" id="en">'
@@ -118,7 +118,7 @@ function addMod(){
 	var writing ='<div class="group">'
 					+'<h3>'+ option_text
 					+'<button class="close" name="delBtn" onClick="javascript:delMod(this);" type="button" style="margin-left:450px;">'
-					+'<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></span></button>'						
+					+'<span aria-hidden="true">&times;</span><span class="sr-only"></span></span></button>'						
 					+'</h3>'
 					+'<div>'	
 						+'<div class="form-group">'
@@ -156,7 +156,7 @@ function addMod(){
 	var video ='<div class="group">'
 					+'<h3>'+ option_text
 					+'<button class="close" name="delBtn" onClick="delMod(this);" type="button" style="margin-left: 450px;">'
-					+'<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></span></button>'
+					+'<span aria-hidden="true">&times;</span><span class="sr-only"></span></span></button>'
 					+'</h3>'	
 					+'<div>'
 						+'<div class="form-group">'
@@ -209,7 +209,7 @@ function addMod(){
 	var words ='<div class="group">'
 					+'<h3>'+ option_text
 					+'<button class="close" name="delBtn" onClick="delMod(this);" type="button" style="margin-left: 450px;">'
-					+'<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></span></button>'
+					+'<span aria-hidden="true">&times;</span><span class="sr-only"></span></span></button>'
 					+'</h3>'	
 					+'<div>'
 						+'<div class="form-group">'
@@ -238,7 +238,7 @@ function addMod(){
 	var sentence = 	'<div class="group">'
 						+'<h3>' + option_text
 							+'<button class="close" name="delBtn" onClick="javascript:delMod(this);" type="button" style="margin-left: 450px;">'
-								+'<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></span>'
+								+'<span aria-hidden="true">&times;</span><span class="sr-only"></span></span>'
 							+'</button>'
 						+'</h3>'
 						+'<div>'
@@ -263,7 +263,7 @@ function addMod(){
 								+'</div>'
 							+'</div>'
 							
-							+'<div class="row" id="senBlock">'
+							+'<div class="row senBlock">'
 								+'<label class="col-xs-1 control-label">영</label>'
 								+'<div class="col-md-2">'
 									+'<input type="text" class="form-control qen" id="en">'

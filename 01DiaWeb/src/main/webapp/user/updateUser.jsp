@@ -128,7 +128,7 @@
 					<input type="submit" id="signup" class="btn btn-primary"  value="저장" />
 					<input type="reset" class="btn btn-primary" value="취소" />
 					<button type="button" class="btn btn-primary">
-						<a href="/main.html"><font color="white">이전</font></a>
+						<a href="/index.html"><font color="white">이전</font></a>
 					</button>
 				</div>
 				

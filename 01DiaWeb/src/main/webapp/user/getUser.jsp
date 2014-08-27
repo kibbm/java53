@@ -82,7 +82,7 @@
 			</form>
 			
 			<div>
-				<button type="button" class="btn btn-primary"><a href="/main.html">
+				<button type="button" class="btn btn-primary"><a href="/index.html">
 				<font color="white">확인</font></a></button>
 				<a href="/updateUserView.do?userId=${user.userId }" class="btn btn-primary">정보수정</a>
 				<a href="/updateLeaveUserView.do?userId=${user.userId }" class="btn btn-primary">회원탈퇴</a>
@@ -90,12 +90,8 @@
 			</div>
 			
 		</div>
-
-	
-	<hr>
-	<div class="container">
-		<div id="footer"></div>
-	</div>
+		
+		
 	<!-- /container -->
 
 	<!-- Bootstrap core JavaScript
@@ -109,7 +105,6 @@
 	<script>
 		$(document).ready(function(){
 			$('#header').load('../header.jsp');
-			$('#footer').load('../footer.jsp');
 		});
 	</script>
 </body>

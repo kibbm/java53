@@ -51,12 +51,6 @@ public class ContentsController<AjaxResult> {
 	}
 	
 	//Method
-	@RequestMapping("/app.do")
-	public String appExplain(){
-		return "forward:/app.jsp";
-	}
-	
-	
 	
 	//User :: 컨텐츠리스트
 	@RequestMapping("/conList.do")

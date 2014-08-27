@@ -124,7 +124,7 @@
 	<script src="/dist/js/make.js"></script>
 
 	<!-- 미리보기 클릭  -->
-	<script src="/dist/js/preview.js"></script>
+	<!-- <script src="/dist/js/preview.js"></script> -->
 	
 <!-- accordion -->
 <script>
@@ -168,13 +168,17 @@ $(function() {
 		/* writing */
 		if($(element).find('h3').text() == '문장 작성×'){
 			console.log('ok');
-			arr[index]={order: index,
+			var quizWrt ={
+					order: index,
 					type:$(element).find('#title').val(),
 					title:$(element).find('#title').val(), 
 					rubric:$(element).find('#rubric').val(), 
 					quiz:$(element).find('#quiz').val(), 
-					option:$("#wRec").val() };	
-			console.log(arr[index]);
+					option:$("#wRec").val()			
+			};
+			
+			arr[index] = quizWrt;
+
 			
 		/* video */	
 		}else if($(element).find('h3').text() == '동영상×'){
@@ -201,15 +205,20 @@ $(function() {
 				title:$(element).find('#title').val(), 
 				rubric:$(element).find('#rubric').val(),
 				quiz: []
-			};
+			 };
 			
-			$(".qword").each(function(index, element){
-				//console.log( "=>>>", $(element).val() );
-				quizObj.quiz.push($(element).val());
-			});
+			$('.qword').each(function(index, element){
+				var obj={
+					enword: $(element).find('.qen').val(),
+					koword: $(element).find('.qen').val(),
+					enmp3: $(element).find('.qen').val()		
+				};
+				quizObj.quiz.push(obj);
+			 });
 			
-			arr[index] = quizObj;		
-			console.log(arr[index]);
+			arr[index] = quizObj;
+			console.log(arr);
+
 			
 		/* Sentence */	
 		}else if($(element).find('h3').text() == '문장 음성 녹음×'){	
@@ -218,34 +227,34 @@ $(function() {
 					type:$(element).find('#title').val(),
 					title:$(element).find('#title').val(), 
 					rubric:$(element).find('#rubric').val(),
-					quiz:{en:[] , ko:[], file:[]}
+					//quiz:{en:[] , ko:[], file:[]}
+					quiz: []
 				};
-				
-				$(".qen").each(function(index, element){
-					quizSen.quiz.en.push($(element).val());
-				});
-				
-				$(".qko").each(function(index, element){
-					quizSen.quiz.ko.push($(element).val());
-				});
-				
-				$(".qfile").each(function(index, element){
-					quizSen.quiz.file.push($(element).text());	
-				});
-				
-				arr[index] = quizSen;		
-				console.log(arr[index]);
+			
+			$('.senBlock').each(function(index, element){
+				//console.log(element);
+				var obj = {
+					enword: $(element).find('.qen').val(),
+					koword: $(element).find('.qen').val(),
+					enmp3: $(element).find('.qfile').text()
+				};
+				quizSen.quiz.push(obj);	
+			});
+			
+			arr[index] = quizSen;
+			console.log(arr);
 		}
 			
 	
 		jsonData = JSON.stringify(arr);
+		console.log(jsonData);
 	
 		return jsonData;
  		
 	});
   	
 
-  	$.ajax({
+   	$.ajax({
 		 type: "POST",
 	     url: "/makeMod.do",
 	     data: {jsonData: jsonData},
