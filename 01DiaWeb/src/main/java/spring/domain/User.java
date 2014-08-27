@@ -1,6 +1,5 @@
 package spring.domain;
 
-import java.sql.Date;
 
 public class User {
 	
@@ -14,7 +13,6 @@ public class User {
 	private String addr;		//for checking delivery books
 	private String level;		
 	private String joindate;		
-	private boolean flag;
 	private int recid;
 	
 	private String phone1;
@@ -138,10 +136,6 @@ public class User {
 		this.level = level;
 	}
 
-
-	
-
-
 	public String getJoindate() {
 		return joindate;
 	}
@@ -151,15 +145,6 @@ public class User {
 		this.joindate = joindate;
 	}
 
-
-	public boolean isFlag() {
-		return flag;
-	}
-
-
-	public void setFlag(boolean flag) {
-		this.flag = flag;
-	}
 
 	//add for rowno
 	public int getRecid() {
@@ -176,8 +161,7 @@ public class User {
 		return "{ "+ "recid: " + recid + ", userId:\'" + userId  
 				+ "\', email:\'" + email + "\', userName:\'" + userName
 				+ "\', birthdate:\'" + birthdate + "\', phone:\'" + phone + "\', addr:\'"
-				+ addr + "\', level:\'" + level + "\', joindate:\'" + joindate
-				+ "\', flag:" + flag + "}";
+				+ addr + "\', level:\'" + level + "\', joindate:\'" + joindate + "}";
 	}
 	
 
