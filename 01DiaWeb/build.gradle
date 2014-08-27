@@ -64,6 +64,8 @@ dependencies {
   compile 'org.springframework:spring-web:4.0.6.RELEASE'
   compile 'org.springframework:spring-web:3.1.1.RELEASE'
   
+  compile 'com.fasterxml:jackson-xml-databind:0.6.2'
+  
   //compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
   
   // testCompile로 지정된 라이브러리 => 컴파일할 때 사용하고, 테스트할 때 사용한다. 배치할 때는 제외한다.
