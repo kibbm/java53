@@ -3,6 +3,6 @@
 
 	<!-- footer -->
 	
-	<div style="text-align:center;">
-		<p>&copy; Dia Company 2013</p>
+	<div style="text-align:left;">
+		<p>Copyright&copy; Dia Company 2013. All Rights Reserved</p>
 	</div>
