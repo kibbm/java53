@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.domain.User;
@@ -43,21 +45,37 @@ public class UserController {
 		return "/user/addUserView.jsp";
 	}
 	
-	//회원가입
+	//addUser
 	@RequestMapping("/addUser.do")
 	public String addUser(@ModelAttribute("user") User user) throws Exception{
 		
 		System.out.println("\n::addUser() start...");
 	
-	//	int newRecid = userService.getRecid() +1;
-	//	user.setRecid(newRecid);
-
 		userService.addUser(user);
 			
 		return "redirect:/index.html";
 	}
 	
-	//학생 개인 정보 조회 
+	//idDuplicationCheck
+		@RequestMapping("/idcheck.do")
+		public @ResponseBody String idCheck (@RequestParam("userId") String userId) throws Exception{
+				
+			System.out.println("\n::idcheck() start...");
+				
+			System.out.println("userId  ::"+userId);
+			
+			int count = userService.idcheck(userId);
+			
+			System.out.println("count :: "+count);	
+			
+			ObjectMapper objectMapper = new ObjectMapper();
+			
+			String jsonResult = objectMapper.writeValueAsString(count);
+			
+			return  jsonResult;
+		}
+
+	//getUser
 	@RequestMapping("/getUser.do")
 	public String getUser(@ModelAttribute("userId") String userId, Model model) throws Exception{
 		
@@ -69,7 +87,7 @@ public class UserController {
 		 return "forward:/user/getUser.jsp";
 	}
 	
-	//학생  정보 수정 view
+	//updateUser view
 	@RequestMapping("/updateUserView.do")
 	public String updateUserView( @RequestParam("userId") String userId , Model model ) throws Exception{
 
@@ -82,7 +100,7 @@ public class UserController {
 		return "forward:/user/updateUser.jsp";
 	}
 	 
-	//학생  정보 수정
+	//updateUser
 	@RequestMapping("/updateUser.do")
 	public String updateUser( @ModelAttribute("user") User user , Model model , HttpSession session) throws Exception{
 
@@ -97,22 +115,6 @@ public class UserController {
 		}
 				
 		return "redirect:/getUser.do?userId="+user.getUserId();
-	}
-	
-	
-	//회원탈퇴	
-	@RequestMapping("/updateLeaveUser.do")
-	public int updateLeaveUser( @ModelAttribute("user") User user , 
-																								Model model , HttpSession session) throws Exception{
-		
-		System.out.println("/updateLeaveUser.do");
-		//Business Logic
-		userService.updateLeaveUser(user);
-				
-		//세션 끊기
-		session.invalidate();
-		
-		return 0;		
 	}
 		
 	@RequestMapping("/loginView.do")
@@ -234,7 +236,6 @@ public class UserController {
 			user.setPhone(list.get(j).getPhone());
 			user.setAddr(list.get(j).getAddr());
 			user.setJoindate(list.get(j).getJoindate());
-			user.setFlag(list.get(j).isFlag());
 		}
 		
 		Map map = new HashMap();
