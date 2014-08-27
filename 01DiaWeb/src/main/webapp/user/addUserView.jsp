@@ -54,9 +54,14 @@
 			
 				<div class="form-group">
 					<label for="inputUserId" class="control-label col-xs-2">아이디</label>
-					<div class="col-lg-4">
-						<input type="text" class="form-control" name="userId" id="userId" 
-						  placeholder="ID">
+					<div class="row col-lg-10">
+						<div class="col-lg-4">
+							<input type="text" class="form-control" name="userId" id="userId" 
+							  placeholder="ID">
+						</div>
+						<div class="col-lg-6">
+							 <span id="idCheckResult">&nbsp</span>
+						</div>
 					</div>
 				</div>
 
@@ -137,6 +142,7 @@
 				</div>
 				
 			</form>
+			
 			<!-- form -->
 			<!-- content -->
 		</div>
@@ -163,18 +169,15 @@
 	    	dateFormat: "yy-mm-dd" });
 	  });
 	  </script>
-	  
-	 <script>
-	 $(document).ready(function() {
-		 $('#addUserForm :text')[0].focus();
-	 });
-	 </script> 
 	 
 	 <!--Bootstrap validation -->
 	<script>
 	$(document).ready(function() {
+		 $('#header').load('../header2.jsp');
 	
-    $('#addUserForm').bootstrapValidator({
+		 $('#addUserForm :text')[0].focus();
+		 
+		  $('#addUserForm').bootstrapValidator({
     	        fields: {
     	            userId: {
     	                validators: {
@@ -230,15 +233,48 @@
     	            	}
     	            }
     	        }//end fields
-    	     });//end bootstrapValidator
+    	     });//end bootstrapValidator 
     	});		
 	</script> 
 	
-	<script>
-	$(document).ready(function(){
-		$('#header').load('../header.jsp');
-		});
+	 <!-- idDuplicationCheck -->
+	<script> 
+	$('#userId').keyup(function() {
+	 	var userId = $('#userId').val();
+	 	
+	 	if(userId=="" ){
+	 		$('#idCheckResult').html("");
+	 	} else if (userId.length < 3) {
+	 		$('#idCheckResult').html("3자 이상으로 입력해 주세요");
+	 		$('#idCheckResult').css("color","#b94a48");
+	 		
+	 	} else if (userId.length >10) {
+	 		$('#idCheckResult').html("10자 이내로 입력해 주세요");
+	 		$('#idCheckResult').css("color","#b94a48");
+	 	}  else {
+	 
+		    $.ajax({	   
+		
+		    	url: "/idcheck.do",
+		    	type:"POST",
+		        dataType: "json",
+		        data: {"userId": userId},
+		    	contentType:  "application/x-www-form-urlencoded; charset=UTF-8", 	
+	        	success: function(result){
+	            	if (result== 0) {
+	            		$('#idCheckResult').html("사용 가능한 아이디입니다");
+	            		$('#idCheckResult').css("color","#468847");
+	        		} else {
+	        			$('#idCheckResult').html("사용할 수 없는 아이디입니다");
+	            		$('#idCheckResult').css("color","#b94a48");
+	        		}
+	        	},
+	        	error: function(){
+					alert('로그인 실행 중 오류 발생!');
+				}
+		    });//ajax 
+	 	}
+	});//keyup
 	</script>
-	
 	</body>
 	</html>
