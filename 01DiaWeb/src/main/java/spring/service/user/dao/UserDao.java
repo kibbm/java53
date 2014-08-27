@@ -6,26 +6,22 @@ import spring.domain.User;
 
 public interface UserDao {
 
-	//회원가입
+	//addUser
 	public void addUser(User user) throws Exception;
 	
-	//개인 정보 조회
+	//getUser
 	public User getUser(String userId) throws Exception;
 	
-	//회원정보 수정
+	//updateUser
 	public void updateUser(User user) throws Exception;	
 	
-	//회원탈퇴
-	public int updateLeaveUser(User user) throws Exception;
-
-	//get RECID
-	public int getRecid() throws Exception;
-
 	//updateStudent
 	public int updateUserforAdmin(User user) throws Exception;	
 	
 	//getStudentList
 	public List<User> getUserList() throws Exception;
 	
-	
+	//idDuplicationCheck
+	public int idcheck(String userId) throws Exception;
+		
 }
