@@ -44,26 +44,25 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int updateLeaveUser(User user) throws Exception {
-		return sqlSession.update("UserMapper.updateLeaveUser", user);
-	}
-
-	@Override
-	public int getRecid() throws Exception {
-		return sqlSession.selectOne("UserMapper.getRecid");
-	}
-
-	@Override
 	public int updateUserforAdmin(User user) throws Exception {
 		System.out.println("Dao updateUserforAdmin user : " + user);		
 		return sqlSession.update("UserMapper.updateUserforAdmin", user);
 	}
 
-
 	@Override
 	public List<User> getUserList() throws Exception {
 		System.out.println("DaoImpl/::==" + sqlSession.selectList("UserMapper.getUserList"));
 		return sqlSession.selectList("UserMapper.getUserList");
+	}
+
+	@Override
+	public int idcheck(String userId) throws Exception {
+		int count = 1;
+		User user = sqlSession.selectOne("UserMapper.idCheck", userId);
+		if(user == null) {
+			count = 0;
+		}
+		return count;
 	}
 
 
