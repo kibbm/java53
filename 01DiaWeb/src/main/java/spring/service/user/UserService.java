@@ -6,24 +6,21 @@ import spring.domain.User;
 
 public interface UserService {
 
-	//회원가입
+	//addUser
 	public void addUser(User user) throws Exception;
 	
-	//학생 개인 정보 조회
+	//getUser
 	public User getUser(String userId) throws Exception;
 	
-	//회원 정보 수정
+	//updateUser
 	public void updateUser(User user) throws Exception;
 	
-	//회원탈퇴
-	public int updateLeaveUser(User user) throws Exception;
-	
-	//updateUser
+	//updateUserAdmin
 	public int updateUserforAdmin(User user) throws Exception;
 	
 	//getUserList
 	public List<User> getUserList() throws Exception;
 	
-	//get RECID
-	public int getRecid() throws Exception;
+	//idDuplicationCheck
+	public int  idcheck(String userId) throws Exception;
 }
