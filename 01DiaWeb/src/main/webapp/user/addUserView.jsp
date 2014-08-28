@@ -137,8 +137,8 @@
 				</div>
 
 				<div class="form-group">
-					<input type="submit" value="회원가입" />
-					<input type="reset" value="취소" />
+					<input type="submit" class="btn btn-primary" value="회원가입" />
+					<input type="reset"class="btn btn-primary" value="취소" onclick="javascript: history.back(-1)" />
 				</div>
 				
 			</form>
