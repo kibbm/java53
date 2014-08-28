@@ -160,8 +160,11 @@ fieldset[disabled] .btn-default-a.active {
 
 /* 새봄 CSS */
 #loginMessage {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-color: #ffffff;
+	font-size: 0.9em;
 	font-position: center;
+	margin: 10px;
 }
 
 .login-container {
@@ -204,4 +207,8 @@ fieldset[disabled] .btn-default-a.active {
 	height: 230px;
 	width: 70%;
 	padding: 50px;
+}
+#idCheckResult {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 0.9em;
 }
