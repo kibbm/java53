@@ -245,7 +245,7 @@ function addMod(){
 							+'<div class="form-group">'
 								+'<label class="col-md-2 control-label">모듈이름</label>'
 								+'<div class="col-md-4">'
-									+'<input type="text" class="form-control" id="title" value="Sense Group">'
+									+'<input type="text" class="form-control" id="title" value="SenseGroup">'
 								+'</div>'
 							+'</div>'
 							+'<div class="form-group">'
